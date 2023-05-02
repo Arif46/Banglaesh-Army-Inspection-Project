@@ -1,0 +1,19 @@
+{
+    "researchRequestManagement" : {
+        "contract_signing": "চুক্তি স্বাক্ষর তথ্য",
+        "contract_sign": "চুক্তি স্বাক্ষর",
+        "eoi_rfp_no": "ইওআই রেফারেন্স নম্বর/আরএফপি নম্বর",
+        "budget_information": "বাজেট তথ্য",
+        "contract_amount": "চুক্তির পরিমান (টাকা)",
+        "installment": "কিস্তি",
+        "payment_for": " অর্থপ্রদানের মাধ্যম",
+        "installment_amount": "কিস্তির পরিমাণ (টাকা)",
+        "installment_no": "কিস্তি নং",
+        "document_name": "নথির নাম",
+        "contract_signing_basic_info": "চুক্তি স্বাক্ষর তথ্য",
+        "document_information": "ডকুমেন্ট এর তথ্য",
+        "contract_sign_status": "চুক্তি স্বাক্ষর হয়নি",
+        "contract_signed_status": "চুক্তি স্বাক্ষর হয়েছে",
+        "research_type": "গবেষণার ধরন"
+    }
+}

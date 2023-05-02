@@ -1,0 +1,8 @@
+{
+    "eBizAssociation":  {
+        "council" : "Council",
+        "association_list" : "Association List",
+        "association" : "Association",
+        "has_association_msg" : "Already have an account in this association"
+    }
+}

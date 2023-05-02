@@ -1,0 +1,15 @@
+{
+    "approvedParticipation":  {
+        "fair_parti_payment": "Fair Participation & Payment Info",
+        "resubmit": "Resubmit",
+        "approved_participation": "Approved Participation",
+        "list": "List",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "approve_msg": "Are you sure to approve",
+        "criteria_checklist": "Criteria checklist",
+        "criteria": "Criteria",
+        "evaluation": "Evaluation",
+        "rejected_participation": "Rejected Participation"
+    }
+}

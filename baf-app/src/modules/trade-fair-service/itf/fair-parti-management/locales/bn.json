@@ -1,0 +1,13 @@
+{
+    "approvedParticipation":  {
+        "fair_parti_payment": "মেলা অংশগ্রহণ এবং পেমেন্ট তথ্য",
+        "approved_participation": "অনুমোদিত অংশগ্রহণ",
+        "resubmit": "পুনরায় দাখিল",
+        "rejected_participation": "প্রত্যাখ্যাত অংশগ্রহণ",
+        "list": "তালিকা",
+        "approve_msg": "আপনি কি নিশ্চিতভাবে প্রকাশ করছেন",
+        "criteria_checklist": "মানদণ্ডের তালিকা",
+        "criteria": "মানদণ্ড",
+        "evaluation": "মূল্যায়ন"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "tradeFairProposalManagement":  {
+        "fair_proposal_management": "Fair Proposal Management",
+        "fair_proposal_sorting": "Fair Proposal Sorting",
+        "circular": "Circular",
+        "total_appliction": "Total Application",
+        "sorting": "Sorting",
+        "forward": "Forward",
+        "reject": "Reject",
+        "exportPromotionBureau": "Export Promotion Bureau",
+        "reject_msg": "Items rejected successfully.",
+        "requested_fair_proposal": "Requested Fair Proposal",
+        "finalcalendar": "Final Calendar",
+        "name_and_title": "Name and Title of Event",
+        "city_country": "City and Country",
+        "product_wise": "Product Wise",
+        "fair_list": "Fair list",
+        "approve_fair_proposal": "Approved Fair Proposal"
+    }
+}

@@ -1,0 +1,18 @@
+const allApp = 'all-app/'
+// Applicant api routes......
+const applicant = allApp + 'applicant-list/'
+export const applicantList = applicant + 'list'
+export const applicantForward = applicant + 'forward'
+export const applicantRecommendationUpdate = applicant + 'recommendation-update'
+export const applicantForwardList = applicant + 'forwarded-list'
+export const applicantRecommendationList = applicant + 'recommendation-list'
+export const applicantRecommendedList = applicant + 'recommended-list'
+export const applicantStore = applicant + 'store'
+export const applicantUpdate = applicant + 'update'
+export const applicantToggle = applicant + 'toggle-status'
+export const applicantTreeDesposal = applicant + 'tree-desposal'
+
+const approveOrReject = allApp + 'approve-or-reject/'
+export const approveOrRejectList = approveOrReject + 'list'
+export const applicantApprove = approveOrReject + 'approve-list'
+export const applicantReject = approveOrReject + 'reject-list'

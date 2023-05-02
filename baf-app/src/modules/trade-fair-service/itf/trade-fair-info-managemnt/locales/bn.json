@@ -1,0 +1,11 @@
+{
+    "tradeFairInfoManagement":  {
+        "fair_calender_circular": "মেলা ক্যালেন্ডার বিজ্ঞপ্তি",
+        "fair_calender_circular_request": "মেলা ক্যালেন্ডার বিজ্ঞপ্তির অনুরোধ",
+        "approve_fair_calender_circular": "অনুমোদিত মেলা ক্যালেন্ডার বিজ্ঞপ্তি",
+        "circular_memo_no": "বিজ্ঞপ্তির মেমো নম্বর",
+        "subject": "বিষয়",
+        "approve_message": "অনুমোদন মন্তব্য",
+        "submission_deadline": "আবেদন জমার সময়সীমা"
+    }
+}

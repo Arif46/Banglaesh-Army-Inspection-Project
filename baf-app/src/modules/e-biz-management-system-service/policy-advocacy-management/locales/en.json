@@ -1,0 +1,30 @@
+{
+    "policyAdvocacy":  {
+        "policy_advocacy_management" : "Policy Advocacy Management",
+        "total_policy" : "Total Policy",
+        "total_application" : "Total Application",
+        "total_feedback" : "Total Feedback",
+        "total_approved" : "Total Approved",
+        "total_workshop" : "Total Workshop",
+        "workshop_list" : "Workshop List",
+        "workshop" : "Workshop",
+        "feedback_and_recommendation" : "Feedback and Recommendation",
+        "workshop_name" : "Workshop Name",
+        "workshop_details" : "Workshop Details",
+        "workshop_details_view" : "Workshop Details View",
+        "workshop_details_list" : "Workshop Details List",
+        "workshop_name_en":"Workshop Name (En)",
+        "workshop_name_bn":"Workshop Name (Bn)",
+        "workshop_place_name_en":"Workshop Place (En)",
+        "workshop_place_name":"Workshop Place",
+        "workshop_place_name_bn":"Workshop Place (Bn)",
+        "workshop_date_from":"Workshop Start Date",
+        "workshop_date_to":"Workshop End Date",
+        "workshop_description_en":"Workshop Details (En)",
+        "workshop_description_bn":"Workshop Details (Bn)",
+        "recommendation":"Recommendation",
+        "policy":"Policy",
+        "end":"End",
+        "workshop_duration":"Workshop Duration"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "ditfAppTradeFairManages":  {
+        "ditf_receive_app": "ডিআইটিএফ আবেদন গ্রহণ",
+        "ditf_approve_app": "ডিআইটিএফ আবেদন অনুমোদিত",
+        "org_name": "প্রতিষ্ঠানের নাম",
+        "org_address": "প্রতিষ্ঠানের ঠিকানা"
+    }
+}

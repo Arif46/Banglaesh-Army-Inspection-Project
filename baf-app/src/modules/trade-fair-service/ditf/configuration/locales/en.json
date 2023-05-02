@@ -1,0 +1,32 @@
+{
+    "ditfConfig":  {
+        "business_type": "Business Type",
+        "info": "Info",
+        "stall_category": "Stall Category",
+        "stall_list": "Stall List",
+        "type": "Type",
+        "stall_info": "Stall Information",
+        "circular": "Circular",
+        "fair_calendar": "Fair Calendar",
+        "instruction": "Instruction",
+        "stall_pavilion_restaurant": "Stall/Pavilion/Restaurant",
+        "stall_pavilion_restaurant_type": "Stall/Pavilion/Restaurant Type",
+        "category": "Category",
+        "total_stall_quantity": "Total Stall Quantity",
+        "security_money": "Security Money",
+        "fair_name": "Fair Name",
+        "notFound": "Data not found",
+        "one_item_msg": "Please add at least one Item",
+        "select_fair_title": "Please Select Fair!!",
+        "alreadyMsg": "Already added this item",
+        "stall_no": "Stall No",
+        "stall_location": "Stall Location",
+        "price_type": "Price Type",
+        "size": "Size",
+        "app_porcess_fee": "Application Process Fee",
+        "fare_floor": "Floor Price",
+        "stall_qty": "Stall Quantity",
+        "security_perc": "Security Percentage (%)"
+    }
+}
+

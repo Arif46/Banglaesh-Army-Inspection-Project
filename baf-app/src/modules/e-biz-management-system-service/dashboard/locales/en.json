@@ -1,0 +1,17 @@
+{
+    "eBizDashboard":  {
+        "program_management": "Program Management",
+        "proposal_management": "Proposal Management",
+        "program": "Programs",
+        "approve_program": "Approved Programs",
+        "pending_program": "Pending Programs",
+        "association": "Association",
+        "agreement": "Agreements",
+        "total_circular": "Total Circular",
+        "total_proposal": "Total Proposal",
+        "approved_proposal": "Approved Proposal",
+        "pending_proposal": "Pending Proposal",
+        "filter_by_fiscal_year": "Filter By Fiscal Year",
+        "filter_by_association": "Filter By Association"
+    }
+}

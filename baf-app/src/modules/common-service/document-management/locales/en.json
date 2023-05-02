@@ -1,0 +1,14 @@
+{
+    "docuement_management":  {
+        "category": "Document Category",
+        "category_en": "Category (En)",
+        "category_bn": "Category (Bn)",
+        "document": "Document",
+        "document_title": "Document title",
+        "document_title_en": "Document Title (En)",
+        "document_title_bn": "Document Title (Bn)",
+        "attachment": "Attachment",
+        "indexing": "Indexing",
+        "archive": "Archive"
+    }
+}

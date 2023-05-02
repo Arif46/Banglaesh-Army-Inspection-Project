@@ -1,0 +1,32 @@
+{
+    "exhibitCircularManagement":  {
+        "fair_exhibit_dts": "Fair Exhibition Info Details",
+        "approved_fair_exhibit_dts": "Approved Fair Exhibition Info Details",  
+        "company_name": "Company Name",
+        "company_type": "Company Type",
+        "fair_exhibition": "Fair Exhibition",
+        "fair_exhibition_info": "Fair Exhibition Info",
+        "approved_fair_exhibition": "Approved Fair Exhibition",
+        "fair_exhibition_forward_info": "Requested Fair Exhibition",
+        "approved_fair_exhibition_info": "Approved Fair Exhibition Info",
+        "circular_memo": "Circular Memo",
+        "description_exhibit": "Description of Exhibition",
+        "hs_code_no": "H.S. Code",
+        "quantity": "Quantity",
+        "unit_price": "Unit Price",
+        "total_price": "Total Price",
+        "subject": "Subject",
+        "cir_of_exit": "Circular of Exhibition",
+        "for_cir_of_exit": "Request circular of exhibition",
+        "app_cir_of_exit": "Approved circular of exhibition",
+        "circular_fair_parti": "Circular (Fair Participation)",
+        "exhibition_cir_info": "Exhibit Circular Info",
+        "city_country": "City and Country",
+        "check": "Check",
+        "resubmit": "Resubmit",
+        "attachment": "Attachment",
+        "document": "Document",
+        "visa_processing_info": "Visa Processing Info",
+        "exhibition_info_report": "Exhibition Info Report Details"
+    }
+}

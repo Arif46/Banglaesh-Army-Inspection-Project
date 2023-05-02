@@ -1,0 +1,28 @@
+{
+    "eventManage":  {
+        "event_date": "Event Date",
+        "event_title": "Event Title",
+        "venue": "Venue",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "time": "Time",
+        "event_description": "Event Description",
+        "start_time": "Start Time",
+        "end_time": "End Time",
+        "upcoming": "UpComing",
+        "accomplished": "Accomplished",
+        "running": "Running",
+        "invitation_card": "Invitation Card",
+        "award_type": "Award Type",
+        "guest_invitation": "Guest Invitation",
+        "guest_list": "Guest List",
+        "service_sector": "Product Service Sector",
+        "entry_status": "Entry Status",
+        "send_invitation_card": "Send Invitation Card",
+        "designation": "Designation",
+        "guest_entry": "Guest Entry",
+        "guest_entry_status": "Entry status updated successfully",
+        "event": "Event",
+        "event_exists": "this year's event already exists" 
+    }
+}

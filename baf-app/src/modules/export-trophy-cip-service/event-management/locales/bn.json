@@ -1,0 +1,28 @@
+{
+    "eventManage":  {
+        "event_date": "ইভেন্ট তারিখ",
+        "event_title": "ইভেন্ট শিরোনাম",
+        "venue": "স্থান",
+        "start_date": "শুরুর তারিখ",
+        "end_date": "শেষ তারিখ",
+        "time": "সময়",
+        "event_description": "ইভেন্ট বিবরণী",
+        "start_time": "শুরুর সময়",
+        "end_time": "শেষ সময়",
+        "upcoming": "আসন্ন",
+        "accomplished": "সম্পন্ন",
+        "running": "চলমান",
+        "invitation_card": "আমন্ত্রণ পত্র",
+        "award_type": "পুরস্কারের ধরন",
+        "guest_invitation": "অতিথি আমন্ত্রণ",
+        "guest_list": "অতিথি তালিকা",
+        "service_sector": "পণ্য পরিষেবা খাত",
+        "entry_status": "প্রবেশের অবস্থা",
+        "send_invitation_card": "আমন্ত্রণ কার্ড পাঠান",
+        "designation": "উপাধি",
+        "guest_entry": "গেস্ট এন্ট্রি",
+        "guest_entry_status": "প্রবেশ সফলভাবে আপডেট করা হয়েছে",
+        "event": "ইভেন্ট",
+        "event_exists": "এই বছরের ইভেন্ট ইতিমধ্যেই বিদ্যমান"
+    }
+}

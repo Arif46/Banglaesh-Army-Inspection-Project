@@ -1,0 +1,13 @@
+// Assign Income Api
+const circular = '/circular/'
+export const circularListApi = circular + 'list'
+export const circularRequestListApi = circular + 'request-list'
+export const circularApproveListApi = circular + 'approve-list'
+export const circularPublishedListApi = circular + 'publish-list'
+export const circularStoreApi = circular + 'store'
+export const circularUpdateApi = circular + 'update'
+export const circularToggleApi = circular + 'toggle-status'
+export const circularForwardStoreApi = circular + 'forward-store'
+export const circularApproveApi = circular + 'approve-store'
+export const circularPublisedListApi = circular + 'published-store'
+export const userListByDesignationApi = 'user/users-by-designation-id'

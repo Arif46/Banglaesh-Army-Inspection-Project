@@ -1,0 +1,30 @@
+{
+    "complain_management":  {
+        "type": "অভিযোগের ধরণ",
+        "type_en": "অভিযোগের ধরণ (ইংরেজী)",
+        "type_bn": "অভিযোগের ধরণ (বাংলা)",
+        "designation": "উপাধি",
+        "complain_designation": "অভিযোগ উপাধি",
+        "complain_title": "অভিযোগের টাইটেল",
+        "complain_title_en": "অভিযোগের টাইটেল (ইংরেজি)",
+        "complain_title_bn": "অভিযোগের টাইটেল (বাংলা)",
+        "complain": "অভিযোগ",
+        "complain_submit": "অভিযোগের তালিকা",
+        "complain_chain": "অভিযোগের চেইন",
+        "complain_info_detail": "অভিযোগের বিস্তারিত",
+        "com_titlel": "অভিযোগের টাইটেল",
+        "com_title": "অভিযোগের টাইটেল (ইংরেজি)",
+        "com_title_bn": "অভিযোগের টাইটেল (বাংলা)",
+        "complain_request": "অভিযোগের অনুরোধ",
+        "complain_approve": "অভিযোগ অনুমোদন",
+        "complain_reject": "অভিযোগ প্রত্যাখ্যান",
+        "committee_list": "কমিটির তালিকা",
+        "complain_report": "অভিযোগের প্রতিবেদন",
+        "send_complain": "অভিযোগ প্রেরণ",
+        "committee_report": "কমিটির প্রতিবেদন",
+        "complian_details": "অভিযোগের বিস্তারিত",
+        "report_note": "রিপোর্ট নোট",
+        "reject_note": "প্রত্যাখ্যান নোট",
+        "approve_note": "অনুমোদন নোট"
+    }
+}

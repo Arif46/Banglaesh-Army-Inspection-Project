@@ -1,0 +1,12 @@
+{
+    "ditfTradeFairManages":  {
+        "ditf_circular": "ডিআইটিএফ বিজ্ঞপ্তি",
+        "circular_type": "সার্কুলার টাইপ",
+        "circular_info": "সার্কুলার তথ্য",
+        "attachment_info": "সংযুক্তি তথ্য",
+        "old_attachment_info": "আগের সংযুক্তি তথ্য",
+        "remove": "মুছে ফেলুন",
+        "ditf_req_circular": "ডিআইটিএফ বিজ্ঞপ্তি অনুরোধ",
+        "ditf_app_circular": "ডিআইটিএফ অনুমোদিত বিজ্ঞপ্তি"
+    }
+}

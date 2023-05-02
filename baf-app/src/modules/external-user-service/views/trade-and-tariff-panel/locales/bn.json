@@ -1,0 +1,11 @@
+{
+    "externalTradeTraiff": {
+        "company_name": "কোমপানির নাম",
+        "bin_no": "বিন নাম্বার",
+        "bin_attachment": "বিন সংযুক্তি",
+        "main_attachment": "প্রধান সংযুক্তি",
+        "license_no": "লাইসেন্স নাম্বার",
+        "license_attachment": "লাইসেন্স সংযুক্তি"
+        
+    }
+}

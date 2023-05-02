@@ -1,0 +1,3395 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://moc-auth-service.local/";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.26.0.js"></script>
+
+    <script src="../docs/js/theme-default-3.26.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                                                                            <ul id="tocify-header-0" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="introduction">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                                            
+                                                                    </ul>
+                                                <ul id="tocify-header-1" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="authenticating-requests">
+                        <a href="#authenticating-requests">Authenticating requests</a>
+                    </li>
+                                            
+                                                </ul>
+                    
+                    <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETversion">
+                        <a href="#endpoints-GETversion">GET version</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTlogin">
+                        <a href="#endpoints-POSTlogin">Get a JWT via given credentials.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTlogout">
+                        <a href="#endpoints-POSTlogout">Log the user out (Invalidate the token).</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTrefresh">
+                        <a href="#endpoints-POSTrefresh">Refresh a token.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTuser-profile">
+                        <a href="#endpoints-POSTuser-profile">Get the authenticated User.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETpost-all">
+                        <a href="#endpoints-GETpost-all">GET post/all</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETpost-list">
+                        <a href="#endpoints-GETpost-list">GET post/list</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETpost-get-all">
+                        <a href="#endpoints-GETpost-get-all">GET post/get-all</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-PUTpost-update--id-">
+                        <a href="#endpoints-PUTpost-update--id-">PUT post/update/{id}</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETpost-show--id-">
+                        <a href="#endpoints-GETpost-show--id-">GET post/show/{id}</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-DELETEpost-destroy--id-">
+                        <a href="#endpoints-DELETEpost-destroy--id-">DELETE post/destroy/{id}</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-DELETEpost-toggle-status--id-">
+                        <a href="#endpoints-DELETEpost-toggle-status--id-">DELETE post/toggle-status/{id}</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTpost-store">
+                        <a href="#endpoints-POSTpost-store">POST post/store</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+        
+                        
+            </div>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+        <ul class="toc-footer" id="last-updated">
+        <li>Last updated: April 5 2022</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://moc-auth-service.local/</code></pre>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+            <h2 id="endpoints-GETversion">GET version</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETversion">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://moc-auth-service.local/version" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/version"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETversion">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">Lumen (8.3.4) (Laravel Components ^8.0)</code>
+ </pre>
+    </span>
+<span id="execution-results-GETversion" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETversion"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETversion"></code></pre>
+</span>
+<span id="execution-error-GETversion" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETversion"></code></pre>
+</span>
+<form id="form-GETversion" data-method="GET"
+      data-path="version"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETversion', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETversion"
+                    onclick="tryItOut('GETversion');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETversion"
+                    onclick="cancelTryOut('GETversion');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETversion" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>version</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-POSTlogin">Get a JWT via given credentials.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTlogin">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://moc-auth-service.local/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTlogin">
+</span>
+<span id="execution-results-POSTlogin" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTlogin"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTlogin"></code></pre>
+</span>
+<span id="execution-error-POSTlogin" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTlogin"></code></pre>
+</span>
+<form id="form-POSTlogin" data-method="POST"
+      data-path="login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTlogin', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTlogin"
+                    onclick="tryItOut('POSTlogin');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTlogin"
+                    onclick="cancelTryOut('POSTlogin');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTlogin" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>login</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-POSTlogout">Log the user out (Invalidate the token).</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTlogout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://moc-auth-service.local/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTlogout">
+</span>
+<span id="execution-results-POSTlogout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTlogout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTlogout"></code></pre>
+</span>
+<span id="execution-error-POSTlogout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTlogout"></code></pre>
+</span>
+<form id="form-POSTlogout" data-method="POST"
+      data-path="logout"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTlogout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTlogout"
+                    onclick="tryItOut('POSTlogout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTlogout"
+                    onclick="cancelTryOut('POSTlogout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTlogout" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>logout</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-POSTrefresh">Refresh a token.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTrefresh">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://moc-auth-service.local/refresh" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/refresh"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTrefresh">
+</span>
+<span id="execution-results-POSTrefresh" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTrefresh"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTrefresh"></code></pre>
+</span>
+<span id="execution-error-POSTrefresh" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTrefresh"></code></pre>
+</span>
+<form id="form-POSTrefresh" data-method="POST"
+      data-path="refresh"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTrefresh', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTrefresh"
+                    onclick="tryItOut('POSTrefresh');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTrefresh"
+                    onclick="cancelTryOut('POSTrefresh');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTrefresh" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>refresh</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-POSTuser-profile">Get the authenticated User.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTuser-profile">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://moc-auth-service.local/user-profile" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/user-profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTuser-profile">
+</span>
+<span id="execution-results-POSTuser-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTuser-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTuser-profile"></code></pre>
+</span>
+<span id="execution-error-POSTuser-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTuser-profile"></code></pre>
+</span>
+<form id="form-POSTuser-profile" data-method="POST"
+      data-path="user-profile"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTuser-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTuser-profile"
+                    onclick="tryItOut('POSTuser-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTuser-profile"
+                    onclick="cancelTryOut('POSTuser-profile');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTuser-profile" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>user-profile</code></b>
+        </p>
+                    </form>
+
+            <h2 id="endpoints-GETpost-all">GET post/all</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETpost-all">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://moc-auth-service.local/post/all?title=est&amp;content=iusto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/all"
+);
+
+const params = {
+    "title": "est",
+    "content": "iusto",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETpost-all">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;List&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;no never&quot;,
+            &quot;content&quot;: &quot;farmer1@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;title&quot;: &quot;9&quot;,
+            &quot;content&quot;: &quot;9&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;title&quot;: &quot;title3&quot;,
+            &quot;content&quot;: &quot;farmer3@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;title&quot;: &quot;title4&quot;,
+            &quot;content&quot;: &quot;farmer4@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;title&quot;: &quot;title5&quot;,
+            &quot;content&quot;: &quot;farmer5@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;title&quot;: &quot;title6&quot;,
+            &quot;content&quot;: &quot;farmer6@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;title&quot;: &quot;title7&quot;,
+            &quot;content&quot;: &quot;farmer7@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;title8&quot;,
+            &quot;content&quot;: &quot;farmer8@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;title9&quot;,
+            &quot;content&quot;: &quot;farmer9@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;title&quot;: &quot;title10&quot;,
+            &quot;content&quot;: &quot;farmer10@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;title&quot;: &quot;title11&quot;,
+            &quot;content&quot;: &quot;farmer11@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;title&quot;: &quot;title12&quot;,
+            &quot;content&quot;: &quot;farmer12@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;title13&quot;,
+            &quot;content&quot;: &quot;farmer13@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;title&quot;: &quot;title14&quot;,
+            &quot;content&quot;: &quot;farmer14@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;title&quot;: &quot;title15&quot;,
+            &quot;content&quot;: &quot;farmer15@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 16,
+            &quot;title&quot;: &quot;title16&quot;,
+            &quot;content&quot;: &quot;farmer16@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 17,
+            &quot;title&quot;: &quot;title17&quot;,
+            &quot;content&quot;: &quot;farmer17@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;title&quot;: &quot;title18&quot;,
+            &quot;content&quot;: &quot;farmer18@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;title&quot;: &quot;title19&quot;,
+            &quot;content&quot;: &quot;farmer19@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;title&quot;: &quot;title20&quot;,
+            &quot;content&quot;: &quot;farmer20@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;title&quot;: &quot;title21&quot;,
+            &quot;content&quot;: &quot;farmer21@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 22,
+            &quot;title&quot;: &quot;title22&quot;,
+            &quot;content&quot;: &quot;farmer22@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 23,
+            &quot;title&quot;: &quot;title23&quot;,
+            &quot;content&quot;: &quot;farmer23@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 24,
+            &quot;title&quot;: &quot;title24&quot;,
+            &quot;content&quot;: &quot;farmer24@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 25,
+            &quot;title&quot;: &quot;title25&quot;,
+            &quot;content&quot;: &quot;farmer25@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 26,
+            &quot;title&quot;: &quot;title26&quot;,
+            &quot;content&quot;: &quot;farmer26@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 27,
+            &quot;title&quot;: &quot;title27&quot;,
+            &quot;content&quot;: &quot;farmer27@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 28,
+            &quot;title&quot;: &quot;title28&quot;,
+            &quot;content&quot;: &quot;farmer28@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 29,
+            &quot;title&quot;: &quot;title29&quot;,
+            &quot;content&quot;: &quot;farmer29@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 30,
+            &quot;title&quot;: &quot;title30&quot;,
+            &quot;content&quot;: &quot;farmer30@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 31,
+            &quot;title&quot;: &quot;title31&quot;,
+            &quot;content&quot;: &quot;farmer31@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 32,
+            &quot;title&quot;: &quot;title32&quot;,
+            &quot;content&quot;: &quot;farmer32@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 33,
+            &quot;title&quot;: &quot;title33&quot;,
+            &quot;content&quot;: &quot;farmer33@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 34,
+            &quot;title&quot;: &quot;title34&quot;,
+            &quot;content&quot;: &quot;farmer34@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 35,
+            &quot;title&quot;: &quot;title35&quot;,
+            &quot;content&quot;: &quot;farmer35@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 36,
+            &quot;title&quot;: &quot;title36&quot;,
+            &quot;content&quot;: &quot;farmer36@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 37,
+            &quot;title&quot;: &quot;title37&quot;,
+            &quot;content&quot;: &quot;farmer37@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 38,
+            &quot;title&quot;: &quot;title38&quot;,
+            &quot;content&quot;: &quot;farmer38@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 39,
+            &quot;title&quot;: &quot;title39&quot;,
+            &quot;content&quot;: &quot;farmer39@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 40,
+            &quot;title&quot;: &quot;title40&quot;,
+            &quot;content&quot;: &quot;farmer40@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 41,
+            &quot;title&quot;: &quot;title41&quot;,
+            &quot;content&quot;: &quot;farmer41@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 42,
+            &quot;title&quot;: &quot;title42&quot;,
+            &quot;content&quot;: &quot;farmer42@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 43,
+            &quot;title&quot;: &quot;title43&quot;,
+            &quot;content&quot;: &quot;farmer43@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 44,
+            &quot;title&quot;: &quot;title44&quot;,
+            &quot;content&quot;: &quot;farmer44@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 45,
+            &quot;title&quot;: &quot;title45&quot;,
+            &quot;content&quot;: &quot;farmer45@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 46,
+            &quot;title&quot;: &quot;title46&quot;,
+            &quot;content&quot;: &quot;farmer46@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 47,
+            &quot;title&quot;: &quot;title47&quot;,
+            &quot;content&quot;: &quot;farmer47@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 48,
+            &quot;title&quot;: &quot;title48&quot;,
+            &quot;content&quot;: &quot;farmer48@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 49,
+            &quot;title&quot;: &quot;title49&quot;,
+            &quot;content&quot;: &quot;farmer49@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 50,
+            &quot;title&quot;: &quot;title50&quot;,
+            &quot;content&quot;: &quot;farmer50@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 51,
+            &quot;title&quot;: &quot;title51&quot;,
+            &quot;content&quot;: &quot;farmer51@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 52,
+            &quot;title&quot;: &quot;title52&quot;,
+            &quot;content&quot;: &quot;farmer52@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 53,
+            &quot;title&quot;: &quot;title53&quot;,
+            &quot;content&quot;: &quot;farmer53@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 54,
+            &quot;title&quot;: &quot;title54&quot;,
+            &quot;content&quot;: &quot;farmer54@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 55,
+            &quot;title&quot;: &quot;title55&quot;,
+            &quot;content&quot;: &quot;farmer55@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 56,
+            &quot;title&quot;: &quot;title56&quot;,
+            &quot;content&quot;: &quot;farmer56@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 57,
+            &quot;title&quot;: &quot;title57&quot;,
+            &quot;content&quot;: &quot;farmer57@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 58,
+            &quot;title&quot;: &quot;title58&quot;,
+            &quot;content&quot;: &quot;farmer58@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 59,
+            &quot;title&quot;: &quot;title59&quot;,
+            &quot;content&quot;: &quot;farmer59@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 60,
+            &quot;title&quot;: &quot;title60&quot;,
+            &quot;content&quot;: &quot;farmer60@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 61,
+            &quot;title&quot;: &quot;title61&quot;,
+            &quot;content&quot;: &quot;farmer61@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 62,
+            &quot;title&quot;: &quot;title62&quot;,
+            &quot;content&quot;: &quot;farmer62@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 63,
+            &quot;title&quot;: &quot;title63&quot;,
+            &quot;content&quot;: &quot;farmer63@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 64,
+            &quot;title&quot;: &quot;title64&quot;,
+            &quot;content&quot;: &quot;farmer64@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 65,
+            &quot;title&quot;: &quot;title65&quot;,
+            &quot;content&quot;: &quot;farmer65@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 66,
+            &quot;title&quot;: &quot;title66&quot;,
+            &quot;content&quot;: &quot;farmer66@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 67,
+            &quot;title&quot;: &quot;title67&quot;,
+            &quot;content&quot;: &quot;farmer67@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 68,
+            &quot;title&quot;: &quot;title68&quot;,
+            &quot;content&quot;: &quot;farmer68@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 69,
+            &quot;title&quot;: &quot;title69&quot;,
+            &quot;content&quot;: &quot;farmer69@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 70,
+            &quot;title&quot;: &quot;title70&quot;,
+            &quot;content&quot;: &quot;farmer70@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 71,
+            &quot;title&quot;: &quot;title71&quot;,
+            &quot;content&quot;: &quot;farmer71@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 72,
+            &quot;title&quot;: &quot;title72&quot;,
+            &quot;content&quot;: &quot;farmer72@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 73,
+            &quot;title&quot;: &quot;title73&quot;,
+            &quot;content&quot;: &quot;farmer73@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 74,
+            &quot;title&quot;: &quot;title74&quot;,
+            &quot;content&quot;: &quot;farmer74@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 75,
+            &quot;title&quot;: &quot;title75&quot;,
+            &quot;content&quot;: &quot;farmer75@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 76,
+            &quot;title&quot;: &quot;title76&quot;,
+            &quot;content&quot;: &quot;farmer76@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 77,
+            &quot;title&quot;: &quot;title77&quot;,
+            &quot;content&quot;: &quot;farmer77@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 78,
+            &quot;title&quot;: &quot;title78&quot;,
+            &quot;content&quot;: &quot;farmer78@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 79,
+            &quot;title&quot;: &quot;title79&quot;,
+            &quot;content&quot;: &quot;farmer79@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 80,
+            &quot;title&quot;: &quot;title80&quot;,
+            &quot;content&quot;: &quot;farmer80@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 81,
+            &quot;title&quot;: &quot;title81&quot;,
+            &quot;content&quot;: &quot;farmer81@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 82,
+            &quot;title&quot;: &quot;title82&quot;,
+            &quot;content&quot;: &quot;farmer82@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 83,
+            &quot;title&quot;: &quot;title83&quot;,
+            &quot;content&quot;: &quot;farmer83@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 84,
+            &quot;title&quot;: &quot;title84&quot;,
+            &quot;content&quot;: &quot;farmer84@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 85,
+            &quot;title&quot;: &quot;title85&quot;,
+            &quot;content&quot;: &quot;farmer85@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 86,
+            &quot;title&quot;: &quot;title86&quot;,
+            &quot;content&quot;: &quot;farmer86@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 87,
+            &quot;title&quot;: &quot;title87&quot;,
+            &quot;content&quot;: &quot;farmer87@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 88,
+            &quot;title&quot;: &quot;title88&quot;,
+            &quot;content&quot;: &quot;farmer88@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 89,
+            &quot;title&quot;: &quot;title89&quot;,
+            &quot;content&quot;: &quot;farmer89@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 90,
+            &quot;title&quot;: &quot;title90&quot;,
+            &quot;content&quot;: &quot;farmer90@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 91,
+            &quot;title&quot;: &quot;title91&quot;,
+            &quot;content&quot;: &quot;farmer91@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 92,
+            &quot;title&quot;: &quot;title92&quot;,
+            &quot;content&quot;: &quot;farmer92@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 93,
+            &quot;title&quot;: &quot;title93&quot;,
+            &quot;content&quot;: &quot;farmer93@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 94,
+            &quot;title&quot;: &quot;title94&quot;,
+            &quot;content&quot;: &quot;farmer94@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 95,
+            &quot;title&quot;: &quot;title95&quot;,
+            &quot;content&quot;: &quot;farmer95@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 96,
+            &quot;title&quot;: &quot;title96&quot;,
+            &quot;content&quot;: &quot;farmer96@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 97,
+            &quot;title&quot;: &quot;title97&quot;,
+            &quot;content&quot;: &quot;farmer97@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 98,
+            &quot;title&quot;: &quot;title98&quot;,
+            &quot;content&quot;: &quot;farmer98@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 99,
+            &quot;title&quot;: &quot;title99&quot;,
+            &quot;content&quot;: &quot;farmer99@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 100,
+            &quot;title&quot;: &quot;title100&quot;,
+            &quot;content&quot;: &quot;farmer100@gmail.com&quot;
+        },
+        {
+            &quot;id&quot;: 101,
+            &quot;title&quot;: &quot;sunny&quot;,
+            &quot;content&quot;: &quot;Khan&quot;
+        },
+        {
+            &quot;id&quot;: 105,
+            &quot;title&quot;: &quot;sunny&quot;,
+            &quot;content&quot;: &quot;khan&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETpost-all" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETpost-all"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETpost-all"></code></pre>
+</span>
+<span id="execution-error-GETpost-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETpost-all"></code></pre>
+</span>
+<form id="form-GETpost-all" data-method="GET"
+      data-path="post/all"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETpost-all', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETpost-all"
+                    onclick="tryItOut('GETpost-all');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETpost-all"
+                    onclick="cancelTryOut('GETpost-all');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETpost-all" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>post/all</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="GETpost-all"
+               value="est"
+               data-component="query" hidden>
+    <br>
+<p>Filter by title in List.</p>
+            </p>
+                    <p>
+                <b><code>content</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="content"
+               data-endpoint="GETpost-all"
+               value="iusto"
+               data-component="query" hidden>
+    <br>
+<p>Filter by content in List.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-GETpost-list">GET post/list</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETpost-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://moc-auth-service.local/post/list?title=consequatur&amp;content=error" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/list"
+);
+
+const params = {
+    "title": "consequatur",
+    "content": "error",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETpost-list">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;List&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 105,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;sunny&quot;,
+                &quot;content&quot;: &quot;khan&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T10:06:26.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T10:06:26.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 101,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;sunny&quot;,
+                &quot;content&quot;: &quot;Khan&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:39:10.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:39:10.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 100,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title100&quot;,
+                &quot;content&quot;: &quot;farmer100@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:58.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:58.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 98,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title98&quot;,
+                &quot;content&quot;: &quot;farmer98@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 99,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title99&quot;,
+                &quot;content&quot;: &quot;farmer99@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 96,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title96&quot;,
+                &quot;content&quot;: &quot;farmer96@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 97,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title97&quot;,
+                &quot;content&quot;: &quot;farmer97@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 95,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title95&quot;,
+                &quot;content&quot;: &quot;farmer95@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 94,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title94&quot;,
+                &quot;content&quot;: &quot;farmer94@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+                &quot;user&quot;: null
+            },
+            {
+                &quot;id&quot;: 92,
+                &quot;user_id&quot;: null,
+                &quot;title&quot;: &quot;title92&quot;,
+                &quot;content&quot;: &quot;farmer92@gmail.com&quot;,
+                &quot;status&quot;: 1,
+                &quot;created_at&quot;: &quot;2022-04-02T09:30:54.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2022-04-02T09:30:54.000000Z&quot;,
+                &quot;user&quot;: null
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://moc-auth-service.local//post/list?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 11,
+        &quot;last_page_url&quot;: &quot;http://moc-auth-service.local//post/list?page=11&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;pagination.previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=2&quot;,
+                &quot;label&quot;: &quot;2&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=3&quot;,
+                &quot;label&quot;: &quot;3&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=4&quot;,
+                &quot;label&quot;: &quot;4&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=5&quot;,
+                &quot;label&quot;: &quot;5&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=6&quot;,
+                &quot;label&quot;: &quot;6&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=7&quot;,
+                &quot;label&quot;: &quot;7&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=8&quot;,
+                &quot;label&quot;: &quot;8&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=9&quot;,
+                &quot;label&quot;: &quot;9&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=10&quot;,
+                &quot;label&quot;: &quot;10&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=11&quot;,
+                &quot;label&quot;: &quot;11&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://moc-auth-service.local//post/list?page=2&quot;,
+                &quot;label&quot;: &quot;pagination.next&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: &quot;http://moc-auth-service.local//post/list?page=2&quot;,
+        &quot;path&quot;: &quot;http://moc-auth-service.local//post/list&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: 10,
+        &quot;total&quot;: 102
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETpost-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETpost-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETpost-list"></code></pre>
+</span>
+<span id="execution-error-GETpost-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETpost-list"></code></pre>
+</span>
+<form id="form-GETpost-list" data-method="GET"
+      data-path="post/list"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETpost-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETpost-list"
+                    onclick="tryItOut('GETpost-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETpost-list"
+                    onclick="cancelTryOut('GETpost-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETpost-list" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>post/list</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="GETpost-list"
+               value="consequatur"
+               data-component="query" hidden>
+    <br>
+<p>Filter by title in List.</p>
+            </p>
+                    <p>
+                <b><code>content</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="content"
+               data-endpoint="GETpost-list"
+               value="error"
+               data-component="query" hidden>
+    <br>
+<p>Filter by content in List.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-GETpost-get-all">GET post/get-all</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETpost-get-all">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://moc-auth-service.local/post/get-all?title=quisquam&amp;content=est" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/get-all"
+);
+
+const params = {
+    "title": "quisquam",
+    "content": "est",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETpost-get-all">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;List&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 105,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;sunny&quot;,
+            &quot;content&quot;: &quot;khan&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T10:06:26.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T10:06:26.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 101,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;sunny&quot;,
+            &quot;content&quot;: &quot;Khan&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:39:10.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:39:10.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 100,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title100&quot;,
+            &quot;content&quot;: &quot;farmer100@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:58.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 98,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title98&quot;,
+            &quot;content&quot;: &quot;farmer98@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 99,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title99&quot;,
+            &quot;content&quot;: &quot;farmer99@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:57.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 96,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title96&quot;,
+            &quot;content&quot;: &quot;farmer96@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 97,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title97&quot;,
+            &quot;content&quot;: &quot;farmer97@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:56.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 94,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title94&quot;,
+            &quot;content&quot;: &quot;farmer94@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 95,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title95&quot;,
+            &quot;content&quot;: &quot;farmer95@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:55.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 92,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title92&quot;,
+            &quot;content&quot;: &quot;farmer92@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:54.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:54.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 93,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title93&quot;,
+            &quot;content&quot;: &quot;farmer93@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:54.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:54.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 90,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title90&quot;,
+            &quot;content&quot;: &quot;farmer90@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:53.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:53.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 91,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title91&quot;,
+            &quot;content&quot;: &quot;farmer91@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:53.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:53.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 88,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title88&quot;,
+            &quot;content&quot;: &quot;farmer88@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:52.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:52.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 89,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title89&quot;,
+            &quot;content&quot;: &quot;farmer89@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:52.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:52.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 87,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title87&quot;,
+            &quot;content&quot;: &quot;farmer87@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:51.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:51.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 85,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title85&quot;,
+            &quot;content&quot;: &quot;farmer85@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:50.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:50.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 86,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title86&quot;,
+            &quot;content&quot;: &quot;farmer86@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:50.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:50.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 83,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title83&quot;,
+            &quot;content&quot;: &quot;farmer83@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:49.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:49.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 84,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title84&quot;,
+            &quot;content&quot;: &quot;farmer84@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:49.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:49.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 81,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title81&quot;,
+            &quot;content&quot;: &quot;farmer81@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:48.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 82,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title82&quot;,
+            &quot;content&quot;: &quot;farmer82@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:48.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:48.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 79,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title79&quot;,
+            &quot;content&quot;: &quot;farmer79@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:47.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 80,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title80&quot;,
+            &quot;content&quot;: &quot;farmer80@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:47.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:47.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 77,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title77&quot;,
+            &quot;content&quot;: &quot;farmer77@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:46.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 78,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title78&quot;,
+            &quot;content&quot;: &quot;farmer78@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:46.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 75,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title75&quot;,
+            &quot;content&quot;: &quot;farmer75@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:45.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:45.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 76,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title76&quot;,
+            &quot;content&quot;: &quot;farmer76@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:45.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:45.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 74,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title74&quot;,
+            &quot;content&quot;: &quot;farmer74@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:44.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:44.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 72,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title72&quot;,
+            &quot;content&quot;: &quot;farmer72@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:43.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:43.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 73,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title73&quot;,
+            &quot;content&quot;: &quot;farmer73@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:43.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:43.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 70,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title70&quot;,
+            &quot;content&quot;: &quot;farmer70@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:42.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:42.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 71,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title71&quot;,
+            &quot;content&quot;: &quot;farmer71@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:42.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:42.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 68,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title68&quot;,
+            &quot;content&quot;: &quot;farmer68@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:41.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:41.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 69,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title69&quot;,
+            &quot;content&quot;: &quot;farmer69@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:41.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:41.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 66,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title66&quot;,
+            &quot;content&quot;: &quot;farmer66@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:40.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:40.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 67,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title67&quot;,
+            &quot;content&quot;: &quot;farmer67@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:40.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:40.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 64,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title64&quot;,
+            &quot;content&quot;: &quot;farmer64@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:39.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:39.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 65,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title65&quot;,
+            &quot;content&quot;: &quot;farmer65@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:39.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:39.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 62,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title62&quot;,
+            &quot;content&quot;: &quot;farmer62@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:38.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 63,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title63&quot;,
+            &quot;content&quot;: &quot;farmer63@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:38.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 61,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title61&quot;,
+            &quot;content&quot;: &quot;farmer61@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:37.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:37.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 59,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title59&quot;,
+            &quot;content&quot;: &quot;farmer59@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:36.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:36.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 60,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title60&quot;,
+            &quot;content&quot;: &quot;farmer60@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:36.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:36.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 57,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title57&quot;,
+            &quot;content&quot;: &quot;farmer57@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:35.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:35.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 58,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title58&quot;,
+            &quot;content&quot;: &quot;farmer58@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:35.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:35.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 55,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title55&quot;,
+            &quot;content&quot;: &quot;farmer55@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:34.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:34.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 56,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title56&quot;,
+            &quot;content&quot;: &quot;farmer56@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:34.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:34.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 53,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title53&quot;,
+            &quot;content&quot;: &quot;farmer53@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:33.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:33.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 54,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title54&quot;,
+            &quot;content&quot;: &quot;farmer54@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:33.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:33.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 51,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title51&quot;,
+            &quot;content&quot;: &quot;farmer51@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:32.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:32.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 52,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title52&quot;,
+            &quot;content&quot;: &quot;farmer52@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:32.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:32.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 49,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title49&quot;,
+            &quot;content&quot;: &quot;farmer49@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:31.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:31.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 50,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title50&quot;,
+            &quot;content&quot;: &quot;farmer50@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:31.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:31.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 47,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title47&quot;,
+            &quot;content&quot;: &quot;farmer47@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:30.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 48,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title48&quot;,
+            &quot;content&quot;: &quot;farmer48@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:30.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 46,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title46&quot;,
+            &quot;content&quot;: &quot;farmer46@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:29.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:29.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 44,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title44&quot;,
+            &quot;content&quot;: &quot;farmer44@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:28.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 45,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title45&quot;,
+            &quot;content&quot;: &quot;farmer45@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:28.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 42,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title42&quot;,
+            &quot;content&quot;: &quot;farmer42@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:27.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:27.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 43,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title43&quot;,
+            &quot;content&quot;: &quot;farmer43@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:27.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:27.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 40,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title40&quot;,
+            &quot;content&quot;: &quot;farmer40@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:26.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:26.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 41,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title41&quot;,
+            &quot;content&quot;: &quot;farmer41@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:26.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:26.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 38,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title38&quot;,
+            &quot;content&quot;: &quot;farmer38@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:25.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 39,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title39&quot;,
+            &quot;content&quot;: &quot;farmer39@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:25.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 36,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title36&quot;,
+            &quot;content&quot;: &quot;farmer36@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:24.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:24.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 37,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title37&quot;,
+            &quot;content&quot;: &quot;farmer37@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:24.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:24.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 34,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title34&quot;,
+            &quot;content&quot;: &quot;farmer34@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:23.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 35,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title35&quot;,
+            &quot;content&quot;: &quot;farmer35@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:23.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:23.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 33,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title33&quot;,
+            &quot;content&quot;: &quot;farmer33@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:22.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:22.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 31,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title31&quot;,
+            &quot;content&quot;: &quot;farmer31@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:21.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:21.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 32,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title32&quot;,
+            &quot;content&quot;: &quot;farmer32@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:21.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:21.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 29,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title29&quot;,
+            &quot;content&quot;: &quot;farmer29@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:20.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:20.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 30,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title30&quot;,
+            &quot;content&quot;: &quot;farmer30@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:20.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:20.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 27,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title27&quot;,
+            &quot;content&quot;: &quot;farmer27@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:19.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:19.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 28,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title28&quot;,
+            &quot;content&quot;: &quot;farmer28@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:19.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:19.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 26,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title26&quot;,
+            &quot;content&quot;: &quot;farmer26@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:18.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:18.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 24,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title24&quot;,
+            &quot;content&quot;: &quot;farmer24@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:17.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:17.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 25,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title25&quot;,
+            &quot;content&quot;: &quot;farmer25@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:17.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:17.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 22,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title22&quot;,
+            &quot;content&quot;: &quot;farmer22@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:16.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:16.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 23,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title23&quot;,
+            &quot;content&quot;: &quot;farmer23@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:16.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:16.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title20&quot;,
+            &quot;content&quot;: &quot;farmer20@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:15.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:15.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title21&quot;,
+            &quot;content&quot;: &quot;farmer21@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:15.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:15.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title18&quot;,
+            &quot;content&quot;: &quot;farmer18@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:14.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:14.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title19&quot;,
+            &quot;content&quot;: &quot;farmer19@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:14.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:14.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 16,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title16&quot;,
+            &quot;content&quot;: &quot;farmer16@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:13.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:13.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 17,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title17&quot;,
+            &quot;content&quot;: &quot;farmer17@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:13.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:13.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title14&quot;,
+            &quot;content&quot;: &quot;farmer14@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:12.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:12.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title15&quot;,
+            &quot;content&quot;: &quot;farmer15@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:12.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:12.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title13&quot;,
+            &quot;content&quot;: &quot;farmer13@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:11.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:11.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title11&quot;,
+            &quot;content&quot;: &quot;farmer11@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:10.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:10.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title12&quot;,
+            &quot;content&quot;: &quot;farmer12@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:10.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:10.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title9&quot;,
+            &quot;content&quot;: &quot;farmer9@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:09.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:09.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title10&quot;,
+            &quot;content&quot;: &quot;farmer10@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:09.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:09.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title7&quot;,
+            &quot;content&quot;: &quot;farmer7@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:08.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title8&quot;,
+            &quot;content&quot;: &quot;farmer8@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:08.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title5&quot;,
+            &quot;content&quot;: &quot;farmer5@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:07.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:07.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title6&quot;,
+            &quot;content&quot;: &quot;farmer6@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:07.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:07.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title3&quot;,
+            &quot;content&quot;: &quot;farmer3@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:06.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:06.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;user_id&quot;: null,
+            &quot;title&quot;: &quot;title4&quot;,
+            &quot;content&quot;: &quot;farmer4@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:06.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:06.000000Z&quot;,
+            &quot;user&quot;: null
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;user_id&quot;: 1,
+            &quot;title&quot;: &quot;9&quot;,
+            &quot;content&quot;: &quot;9&quot;,
+            &quot;status&quot;: 2,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:05.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-05T05:39:46.000000Z&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Md.Meherul Islam&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;user_id&quot;: 1,
+            &quot;title&quot;: &quot;no never&quot;,
+            &quot;content&quot;: &quot;farmer1@gmail.com&quot;,
+            &quot;status&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-04-02T09:30:02.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-04-02T09:30:02.000000Z&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Md.Meherul Islam&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETpost-get-all" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETpost-get-all"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETpost-get-all"></code></pre>
+</span>
+<span id="execution-error-GETpost-get-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETpost-get-all"></code></pre>
+</span>
+<form id="form-GETpost-get-all" data-method="GET"
+      data-path="post/get-all"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETpost-get-all', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETpost-get-all"
+                    onclick="tryItOut('GETpost-get-all');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETpost-get-all"
+                    onclick="cancelTryOut('GETpost-get-all');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETpost-get-all" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>post/get-all</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="GETpost-get-all"
+               value="quisquam"
+               data-component="query" hidden>
+    <br>
+<p>Filter by title in List.</p>
+            </p>
+                    <p>
+                <b><code>content</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="content"
+               data-endpoint="GETpost-get-all"
+               value="est"
+               data-component="query" hidden>
+    <br>
+<p>Filter by content in List.</p>
+            </p>
+                </form>
+
+            <h2 id="endpoints-PUTpost-update--id-">PUT post/update/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTpost-update--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://moc-auth-service.local/post/update/illo" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": 9,
+    \"title\": \"et\",
+    \"body\": \"quas\",
+    \"cars\": [
+        {
+            \"year\": \"1997\",
+            \"make\": \"Toyota\"
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/update/illo"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": 9,
+    "title": "et",
+    "body": "quas",
+    "cars": [
+        {
+            "year": "1997",
+            "make": "Toyota"
+        }
+    ]
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTpost-update--id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+ &quot;success&quot;: true,
+ &quot;message&quot;: &quot;Data Saved Successfully&quot;,
+ &quot;data&quot;: {
+    id: 4,
+    &quot;user_id&quot;: 2,
+    &quot;content&quot;: &quot;Description&quot;
+    &quot;status&quot;: &quot;1&quot;
+  }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Failed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+ &quot;success&quot;: false,
+ &quot;message&quot;: &quot;Failed to save data&quot;
+ &quot;errors&quot;  =&gt; &quot;.....&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTpost-update--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTpost-update--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTpost-update--id-"></code></pre>
+</span>
+<span id="execution-error-PUTpost-update--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTpost-update--id-"></code></pre>
+</span>
+<form id="form-PUTpost-update--id-" data-method="PUT"
+      data-path="post/update/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTpost-update--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTpost-update--id-"
+                    onclick="tryItOut('PUTpost-update--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTpost-update--id-"
+                    onclick="cancelTryOut('PUTpost-update--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTpost-update--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>post/update/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="PUTpost-update--id-"
+               value="illo"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="user_id"
+               data-endpoint="PUTpost-update--id-"
+               value="9"
+               data-component="body" hidden>
+    <br>
+<p>The id of the user.</p>
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="PUTpost-update--id-"
+               value="et"
+               data-component="body" hidden>
+    <br>
+<p>The title of the post.</p>
+        </p>
+                <p>
+            <b><code>body</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="body"
+               data-endpoint="PUTpost-update--id-"
+               value="quas"
+               data-component="body" hidden>
+    <br>
+<p>The content of the post.</p>
+        </p>
+                <p>
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b><code>cars</code></b>&nbsp;&nbsp;<small>object[]</small>     <i>optional</i> &nbsp;
+<br>
+<p>List of cars</p>
+            </summary>
+                                                <p>
+                        <b><code>cars[].year</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="cars.0.year"
+               data-endpoint="PUTpost-update--id-"
+               value="1997"
+               data-component="body" hidden>
+    <br>
+<p>The year the car was made.</p>
+                    </p>
+                                                                <p>
+                        <b><code>cars[].make</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="cars.0.make"
+               data-endpoint="PUTpost-update--id-"
+               value="Toyota"
+               data-component="body" hidden>
+    <br>
+<p>The make of the car.</p>
+                    </p>
+                                    </details>
+        </p>
+        </form>
+
+            <h2 id="endpoints-GETpost-show--id-">GET post/show/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETpost-show--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://moc-auth-service.local/post/show/7" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/show/7"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETpost-show--id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    id: 4,
+    &quot;user_id&quot;: 2,
+    &quot;content&quot;: &quot;Description&quot;
+    &quot;status&quot;: &quot;1&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Failed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Data not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETpost-show--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETpost-show--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETpost-show--id-"></code></pre>
+</span>
+<span id="execution-error-GETpost-show--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETpost-show--id-"></code></pre>
+</span>
+<form id="form-GETpost-show--id-" data-method="GET"
+      data-path="post/show/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETpost-show--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETpost-show--id-"
+                    onclick="tryItOut('GETpost-show--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETpost-show--id-"
+                    onclick="cancelTryOut('GETpost-show--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETpost-show--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>post/show/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="GETpost-show--id-"
+               value="7"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the post.</p>
+            </p>
+                    <p>
+                <b><code>lang</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="lang"
+               data-endpoint="GETpost-show--id-"
+               value="en"
+               data-component="url" hidden>
+    <br>
+<p>The language.</p>
+            </p>
+                    </form>
+
+            <h2 id="endpoints-DELETEpost-destroy--id-">DELETE post/destroy/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEpost-destroy--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://moc-auth-service.local/post/destroy/8" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/destroy/8"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEpost-destroy--id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Data deleted successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Failed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Data not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEpost-destroy--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEpost-destroy--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEpost-destroy--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEpost-destroy--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEpost-destroy--id-"></code></pre>
+</span>
+<form id="form-DELETEpost-destroy--id-" data-method="DELETE"
+      data-path="post/destroy/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEpost-destroy--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEpost-destroy--id-"
+                    onclick="tryItOut('DELETEpost-destroy--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEpost-destroy--id-"
+                    onclick="cancelTryOut('DELETEpost-destroy--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEpost-destroy--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>post/destroy/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="DELETEpost-destroy--id-"
+               value="8"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the post.</p>
+            </p>
+                    </form>
+
+            <h2 id="endpoints-DELETEpost-toggle-status--id-">DELETE post/toggle-status/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEpost-toggle-status--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://moc-auth-service.local/post/toggle-status/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/toggle-status/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEpost-toggle-status--id-">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Data updated successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Failed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Data not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEpost-toggle-status--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEpost-toggle-status--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEpost-toggle-status--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEpost-toggle-status--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEpost-toggle-status--id-"></code></pre>
+</span>
+<form id="form-DELETEpost-toggle-status--id-" data-method="DELETE"
+      data-path="post/toggle-status/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEpost-toggle-status--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEpost-toggle-status--id-"
+                    onclick="tryItOut('DELETEpost-toggle-status--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEpost-toggle-status--id-"
+                    onclick="cancelTryOut('DELETEpost-toggle-status--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEpost-toggle-status--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>post/toggle-status/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="DELETEpost-toggle-status--id-"
+               value="16"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the post.</p>
+            </p>
+                    </form>
+
+            <h2 id="endpoints-POSTpost-store">POST post/store</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTpost-store">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://moc-auth-service.local/post/store" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "user_id=9" \
+    --form "title=vel" \
+    --form "body=repellat" \
+    --form "cars[][year]=1997" \
+    --form "cars[][make]=Toyota" \
+    --form "image=@/tmp/phpSdTdUz" \
+    --form "cars[][file]=@/tmp/phpqrue8C" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://moc-auth-service.local/post/store"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('user_id', '9');
+body.append('title', 'vel');
+body.append('body', 'repellat');
+body.append('cars[][year]', '1997');
+body.append('cars[][make]', 'Toyota');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
+body.append('cars[][file]', document.querySelector('input[name="cars[][file]"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTpost-store">
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+ &quot;success&quot;: true,
+ &quot;message&quot;: &quot;Data Saved Successfully&quot;,
+ &quot;data&quot;: {
+    id: 4,
+    &quot;user_id&quot;: 2,
+    &quot;content&quot;: &quot;Description&quot;
+    &quot;status&quot;: &quot;1&quot;
+  }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Failed):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+ &quot;success&quot;: false,
+ &quot;message&quot;: &quot;Failed to save data&quot;
+ &quot;errors&quot;  =&gt; &quot;.....&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTpost-store" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTpost-store"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTpost-store"></code></pre>
+</span>
+<span id="execution-error-POSTpost-store" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTpost-store"></code></pre>
+</span>
+<form id="form-POSTpost-store" data-method="POST"
+      data-path="post/store"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"multipart\/form-data","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTpost-store', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTpost-store"
+                    onclick="tryItOut('POSTpost-store');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTpost-store"
+                    onclick="cancelTryOut('POSTpost-store');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTpost-store" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>post/store</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="user_id"
+               data-endpoint="POSTpost-store"
+               value="9"
+               data-component="body" hidden>
+    <br>
+<p>The id of the user.</p>
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="POSTpost-store"
+               value="vel"
+               data-component="body" hidden>
+    <br>
+<p>The title of the post.</p>
+        </p>
+                <p>
+            <b><code>body</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="body"
+               data-endpoint="POSTpost-store"
+               value="repellat"
+               data-component="body" hidden>
+    <br>
+<p>The content of the post.</p>
+        </p>
+                <p>
+            <b><code>image</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
+               name="image"
+               data-endpoint="POSTpost-store"
+               value=""
+               data-component="body" hidden>
+    <br>
+<p>The image.</p>
+        </p>
+                <p>
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b><code>cars</code></b>&nbsp;&nbsp;<small>object[]</small>     <i>optional</i> &nbsp;
+<br>
+<p>List of cars</p>
+            </summary>
+                                                <p>
+                        <b><code>cars[].year</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="cars.0.year"
+               data-endpoint="POSTpost-store"
+               value="1997"
+               data-component="body" hidden>
+    <br>
+<p>The year the car was made.</p>
+                    </p>
+                                                                <p>
+                        <b><code>cars[].make</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="cars.0.make"
+               data-endpoint="POSTpost-store"
+               value="Toyota"
+               data-component="body" hidden>
+    <br>
+<p>The make of the car.</p>
+                    </p>
+                                                                <p>
+                        <b><code>cars[].file</code></b>&nbsp;&nbsp;<small>file</small>  &nbsp;
+                <input type="file"
+               name="cars.0.file"
+               data-endpoint="POSTpost-store"
+               value=""
+               data-component="body" hidden>
+    <br>
+<p>The cars[].file.</p>
+                    </p>
+                                    </details>
+        </p>
+        </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

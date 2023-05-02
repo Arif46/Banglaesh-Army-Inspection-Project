@@ -1,0 +1,105 @@
+<template>
+  <b-container fluid>
+       <b-row style="line-height: 20px">
+            <template>
+                <b-row>
+                    <b-col md="12">
+                        <table style="line-height: 25px" class="table table-sm table-borderless">
+                            <tr>
+                                <th style="width: 20%">{{$t('policyAdvocacy.workshop_name')}}</th>
+                                <td style="width: 35%" > : {{currentLocale === 'en'? items.workshop_name  : items.workshop_name_bn}}</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">{{ $t('policyAdvocacy.workshop_place_name')}} </th>
+                                <td style="width: 35%">: {{currentLocale === 'en'? items.workshop_place  : items.workshop_place_bn}}</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 20%">{{ $t('policyAdvocacy.workshop_date_from')}} </th>
+                                <td style="width: 35%">: {{ items.start_date | dateFormat}}</td>
+                                <th style="width: 20%">{{ $t('policyAdvocacy.workshop_date_to')}} </th>
+                                <td style="width: 35%">: {{ items.end_date | dateFormat}}</td>
+                            </tr>
+                            <tr>
+                                <th class="mt-2" style="width: 20%">{{$t('eBizConfig.description')}}</th>
+                                <td colspan="3" style="width: 85%"> : <div v-html="items.description"></div></td>
+                            </tr>
+                              <tr>
+                                <th style="width: 20%">{{ $t('globalTrans.attachment')}} </th>
+                                <td style="width: 35%">:
+                                    <span v-if="items.attachment">
+                                        <a target="_blank" class="btn btn-primary mr-2" :href="eBizServiceBaseUrl+'download-attachment?file='+items.attachment" title="Application Attachment"><i class="ri-file-download-line"></i>&nbsp;
+                                        </a>
+                                    </span>
+                                    <span v-else>{{ 'N/A' }}</span></td>
+                            </tr>
+                        </table>
+                    </b-col>
+                </b-row>
+            </template>
+    </b-row>
+  </b-container>
+</template>
+<script>
+import AddressHelper from '@/utils/area-type-address'
+import { eBizServiceBaseUrl } from '@/config/api_config'
+export default {
+    props: ['items'],
+    components: {
+    },
+    created () {
+    },
+    data () {
+        return {
+              AddressHelper: AddressHelper,
+              eBizServiceBaseUrl: eBizServiceBaseUrl,
+              profile: this.$store.state.EBizManagementSystemService.commonObj.associationProfileList.find(item => parseInt(item.id) === parseInt(this.items.application.contact_person_id))
+        }
+    },
+    computed: {
+        currentLocale () {
+            return this.$i18n.locale
+        }
+    },
+    methods: {
+        getDivisionName (Id) {
+            const Obj = this.$store.state.CommonService.commonObj.divisionList.find(item => item.value === parseInt(Id))
+            if (Obj) {
+                return this.$i18n.locale === 'bn' ? Obj.text_bn : Obj.text_en
+            } else {
+                return ''
+            }
+        },
+        getCouncilName (councilNameId) {
+                const cateObj = this.$store.state.EBizManagementSystemService.commonObj.councilInfoList.filter(item => item.status === 1).find(item => item.value === councilNameId)
+                if (cateObj !== undefined) {
+                    if (this.$i18n.locale === 'bn') {
+                        return cateObj.text_bn
+                    } else {
+                        return cateObj.text_en
+                    }
+                }
+        },
+        getAssociationName (associationId) {
+            const cateObj = this.$store.state.EBizManagementSystemService.commonObj.associationInfoList.filter(item => item.status === 1).find(item => item.value === associationId)
+            if (cateObj !== undefined) {
+                if (this.$i18n.locale === 'bn') {
+                    return cateObj.text_bn
+                } else {
+                    return cateObj.text_en
+                }
+            }
+        },
+        getGenderName (genId) {
+            const cateObj = this.$store.state.commonObj.genderList.find(item => item.value === genId)
+            if (cateObj !== undefined) {
+                if (this.$i18n.locale === 'bn') {
+                    return cateObj.text_bn
+                } else {
+                    return cateObj.text_en
+                }
+            }
+        }
+    }
+}
+
+</script>

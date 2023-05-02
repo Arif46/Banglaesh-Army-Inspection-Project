@@ -1,0 +1,12 @@
+{
+    "ditfTradeFairManages":  {
+        "ditf_circular": "DITF Circular",
+        "circular_type": "Circular Type",
+        "circular_info": "Circular Information",
+        "attachment_info": "Attachment Information",
+        "old_attachment_info": "Old Attachment Information",
+        "remove": "Remove",
+        "ditf_req_circular": "DITF Requested Circular",
+        "ditf_app_circular": "DITF Approved Circular"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "complain_management":  {
+        "type": "Complain Type",
+        "type_en": "Type (En)",
+        "type_bn": "Type (Bn)",
+        "designation": "Designation",
+        "complain_designation": "Complain Designation",
+        "complain_title": "Complain Title",
+        "complain_title_en": "Complain Title (En)",
+        "complain_title_bn": "Complain Title (BN)",
+        "complain": "Complain",
+        "complain_submit": "Submit Complain",
+        "complain_chain": "Complain Chain",
+        "complain_info_detail": "Complain Info Detail",
+        "com_title": "Complain Title",
+        "complain_request": "Complain Request",
+        "complain_approve": "Complain Approve",
+        "complain_reject": "Complain Reject",
+        "send_report": "Send Report",
+        "send_complain": "Send complain",
+        "note": "Note",
+        "committee_list": "Committee List",
+        "complain_report": "Complain Report",
+        "committee_report": "Commitee Report",
+        "complian_details": "Complain Details",
+        "report_note": "Report note",
+        "reject_note": "Reject note",
+        "approve_note": "Approve note"
+    }
+}

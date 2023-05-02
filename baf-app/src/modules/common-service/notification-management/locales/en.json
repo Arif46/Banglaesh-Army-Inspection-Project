@@ -1,0 +1,29 @@
+{
+    "notification":  {
+        "notification": "Notification",
+        "notification_type": "Notification Type",
+        "notification_type_name": "Notification Type Name (En)",
+        "notification_type_name_bn": "Notification Type Name (Bn)",
+        "notification_type_entry": "Notification Type Entry",
+        "notification_setting": "Notification Setup",
+        "template": "Template",
+        "mobile": "Mobile",
+        "message_template": "Message Template",
+        "email_web_text": "Email/Web",
+        "media": "Media",
+        "recipients": "Recipients",
+        "button": "button",
+        "circulate_notice": "Circulate Notice",
+        "circulate_notice_entry": "Circulate Notice Entry",
+        "notice_titlel": "Notice Title",
+        "notice_title": "Notice Title (En)",
+        "notice_title_bn": "Notice Title (Bn)",
+        "notice_description": "Notice Description (En)",
+        "notice_descriptionl": "Notice Description",
+        "notice_description_bn": "Notice Description (Bn)",
+        "notice_for": "Notice for",
+        "office": "Office",
+        "designation": "Designation",
+        "schedule": "Schedule"
+    }
+}

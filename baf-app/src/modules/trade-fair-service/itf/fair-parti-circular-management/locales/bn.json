@@ -1,0 +1,17 @@
+{
+    "tradeFairPartiCircularManagement":  {
+        "fair_parti_circular": "মেলা অংশগ্রহণ বিজ্ঞপ্তি",
+        "fair_parti_circular_request": "মেলা অংশগ্রহণ বিজ্ঞপ্তির অনুরোধ",
+        "fair_parti_circular_approval": "মেলা অংশগ্রহণ বিজ্ঞপ্তির অনুমোদন",
+        "circular_info": "বিজ্ঞপ্তির তথ্য",
+        "subsidy_info": "ভর্তুকি তথ্য",
+        "stall_info": "স্টল তথ্য",
+        "subsidy_range": "ভর্তুকি পরিসীমা",
+        "fair_parti_cir_info": "মেলা অংশগ্রহণ বিজ্ঞপ্তির তথ্য",
+        "equel_zero": "প্রারম্ভিক (কোন রপ্তানি নাই)",
+        "underFive": "০৫ এর নীচে",
+        "underTen": "০৫-১০",
+        "aboveTen": "১০ এর উপরে",
+        "return": "রির্টান"
+    }
+}

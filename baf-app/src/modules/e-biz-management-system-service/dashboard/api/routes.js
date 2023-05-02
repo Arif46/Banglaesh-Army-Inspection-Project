@@ -1,0 +1,3 @@
+// Report Head api routes......
+const dashProgram = '/program-management/'
+export const programList = dashProgram + 'dashboard'

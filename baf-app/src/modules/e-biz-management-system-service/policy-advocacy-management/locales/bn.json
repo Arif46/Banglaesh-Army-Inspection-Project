@@ -1,0 +1,30 @@
+{
+    "policyAdvocacy":  {
+        "policy_advocacy_management" : "পলিসি অ্যাডভোকেসি ব্যবস্থাপনা",
+        "total_policy" : "মোট পলিসি ",
+        "total_application" : "মোট আবেদন ",
+        "total_feedback" : "মোট ফিডব্যাকর",
+        "total_approved" : "মোট অনুমোদিত",
+        "total_workshop" : "মোট কর্মশালা",
+        "workshop_list" : "কর্মশালার তালিকা",
+        "feedback_and_recommendation" : "প্রতিক্রিয়া এবং সুপারিশ",
+        "workshop" : "কর্মশালা",
+        "workshop_name" : "কর্মশালার নাম",
+        "workshop_details" : "কর্মশালার বিবরণ",
+        "workshop_details_view" : "কর্মশালার বিবরণ দেখুন",
+        "workshop_details_list" : "কর্মশালার বিবরণ তালিকা",
+        "workshop_name_en":"কর্মশালার নাম (ইংরেজি)",
+        "workshop_name_bn":"কর্মশালার নাম (বাংলা)",
+        "workshop_place_name_en":"কর্মশালার স্থান (ইংরেজি)",
+        "workshop_place_name":"কর্মশালার স্থান",
+        "workshop_place_name_bn":"কর্মশালার স্থান (বাংলা)",
+        "workshop_date_from":"কর্মশালা শুরুর তারিখ",
+        "workshop_date_to":"কর্মশালা শেষের তারিখ",
+        "workshop_description_en":"কর্মশালার বিবরণ (ইংরেজি)",
+        "workshop_description_bn":"কর্মশালার বিবরণ (বাংলা)",
+        "recommendation":"সুপারিশ",
+        "policy":"নীতি",
+        "end":"শেষ",
+        "workshop_duration":"কর্মশালার সময়কাল"
+    }
+}

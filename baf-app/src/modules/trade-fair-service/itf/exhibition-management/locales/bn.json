@@ -1,0 +1,33 @@
+{
+    "exhibitCircularManagement":  {
+        "fair_exhibit_dts": "মেলার প্রদর্শনীর তথ্য বিবরণ",
+        "approved_fair_exhibit_dts": "মেলার অনুমোদিত প্রদর্শনীর তথ্য বিবরণ",  
+        "company_name": "কোম্পানির নাম",
+        "company_type": "কোম্পানি ধরন",
+        "fair_exhibition": "মেলার প্রদর্শনী",
+        "approved_fair_exhibition": "অনুমোদিত মেলার প্রদর্শনী",
+        "fair_exhibition_info": "মেলার প্রদর্শনীর তথ্য",
+        "fair_exhibition_forward_info": "অনুরোধ মেলার প্রদর্শনীর তথ্য",
+        "approved_fair_exhibition_info": "অনুমোদিত মেলার প্রদর্শনী তথ্য",
+        "circular_memo": "বিজ্ঞপ্তির মেমো",
+        "description_exhibit": "প্রদর্শনীর বর্ণনা",
+        "hs_code_no": "এইচ.এস. কোড নং",
+        "quantity": "পরিমাণ",
+        "unit_price": "একক দাম",
+        "total_price": "মোট দাম",
+        "subject": "বিষয়",
+        "cir_of_exit": "প্রদর্শনীর বিজ্ঞপ্তি",
+        "for_cir_of_exit": "প্রদর্শনীর সার্কুলার অনুরোধ করুন",
+        "app_cir_of_exit": "প্রদর্শনীর অনুমোদিত বিজ্ঞপ্তি",
+        "circular_fair_parti": "বিজ্ঞপ্তি (মেলা অংশগ্রহণ)",
+        "exhibition_cir_info": "প্রদর্শনীর বিজ্ঞপ্তির তথ্য",
+        "city_country": "শহর এবং দেশ",
+        "cir_request_of_exit": "প্রদর্শনীর বিজ্ঞপ্তি",
+        "check": "চেক",
+        "resubmit": "পুনরায় জমা দিয়েছেন",
+        "attachment": "সংযুক্তি",
+        "document": "নথি",
+        "visa_processing_info": "ভিসা প্রক্রিয়াকরণ তথ্য",
+        "exhibition_info_report": "প্রদর্শনী তথ্য প্রতিবেদন"
+    }
+}

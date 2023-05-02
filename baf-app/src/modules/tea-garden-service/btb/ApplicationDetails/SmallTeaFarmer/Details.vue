@@ -1,0 +1,698 @@
+<template>
+    <card>
+      <body-card>
+          <template v-slot:headerTitle>
+            <h4 class="card-title">{{ $t('dealer.application_form') }}</h4>
+          </template>
+          <template v-slot:body>
+            <b-row>
+              <b-col sm="12">
+                <b-tabs content-class="mt-0" fill>
+                  <b-tab :title="$t('license_management.application')" active>
+                    <div v-if="loading">
+                      <Loading />
+                    </div>
+                    <b-overlay v-else>
+                      <div class="p-3">
+                        <b-row>
+                          <b-col sm="12">
+                            <div class="text-right">
+                              <b-button variant="primary" @click="pdfExport" class="btn btn-sm mb-2">
+                                <i class="ri-printer-line"></i> {{ $t('globalTrans.print') }}
+                              </b-button>
+                            </div>
+                              <div v-if="application.application.status === 6" class="text-right mt-2 mb-2">
+                                <div class="tagTwo">
+                                  {{ $t('dealer.document_verified') }}
+                                </div>
+                              </div>
+                              <div class="mb-4" style="display: flex; flex-wrap: wrap;">
+                                <div class="" style="width:50%"><b>{{ $t('teaGardenService.application_id') }}</b> : {{
+                                  application.application.app_id }}</div>
+                                <div class="text-right" style="width:50%"><b>{{ $t('externalLrcpn.expire_date') }}</b> : {{
+                                  application.application.expired_date | dateFormat }}</div>
+                              </div>
+                              <div class="stepper-wrapper">
+                                <div :class="item.value <= application.application.status ? `stepper-item completed` : `stepper-item`"
+                                  v-for="(item, index) in stepList" :key="index">
+                                  <div class="step-counter">
+                                    <i v-if="item.value <= application.application.status" class="ri-check-fill"></i>
+                                    <span v-else>{{ $n(index+1) }}</span>
+                                  </div>
+                                  <div class="step-name">{{ item.text }}</div>
+                                </div>
+                              </div>
+                              <!-- Application view start -->
+                              <div class="application-form-wrapper application-form-view-wrapper mt-5">
+                              <div>
+                                  <h5 style="border-bottom: 2px solid #2f3542;width: 62%;margin: 3rem auto;padding-bottom: 5px;text-align: center;">{{ $t('teaGardenPanel.tea_farmer_registration_label') }}</h5>
+                              </div>
+                            <div class="application-itmes">
+                                <div class="group-form-card">
+                                    <b-form-group label-cols-lg="3" :label="$t('teaGardenPanel.gardenInfo')" label-size="md" label-class="font-weight-bold pt-0" class="form-view-item">
+                                        <b-row>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.garden_name')} :`">
+                                                    <p class="input-field">{{ (currentLocale === 'en') ? application.garden_name_en : application.garden_name_bn }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenConfig.division')} :`">
+                                                    <p class="input-field">{{ getDivisionName(application.division_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenConfig.district')} :`">
+                                                    <p class="input-field">{{ getDistrictName(application.district_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.city_corporation_id && application.city_corporation_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.city_corporation')} :`">
+                                                    <p class="input-field">{{ getCityCorporationName(application.city_corporation_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.upazila_id && application.upazila_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.upazila')} :`">
+                                                    <p class="input-field">{{ getUpzillaName(application.upazila_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.pauroshoba_id && application.pauroshoba_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.municipality_name')} :`">
+                                                    <p class="input-field">{{ getPauroshobaName(application.pauroshoba_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.union_id && application.union_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.union')} :`">
+                                                    <p class="input-field">{{ getUnionName(application.union_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.distance_from_upzilla')} :`">
+                                                    <p class="input-field">{{ $n(application.distance_from_upzilla) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                        </b-row>
+                                    </b-form-group>
+                                </div>
+                                <div class="group-form-card">
+                                    <b-form-group label-cols-lg="3" :label="$t('teaGardenPanel.owner_contact_address_label')" label-size="md" label-class="font-weight-bold pt-0" class="form-view-item">
+                                        <b-row>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.owner_name')} :`">
+                                                    <p class="input-field">{{ (currentLocale === 'en') ? application.owner_info.owner_name_en : application.owner_info.owner_name_bn }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.owner_father_name')} :`">
+                                                    <p class="input-field">{{ (currentLocale === 'en') ? application.owner_info.father_name_en : application.owner_info.father_name_bn }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.owner_nid')} :`">
+                                                    <p class="input-field"><span v-if="application.owner_info.owner_nid">{{ EngBangNum(application.owner_info.owner_nid) }}</span></p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.owner_email')} :`">
+                                                    <p class="input-field"><span v-if="application.owner_info.owner_email">{{ application.owner_info.owner_email }}</span></p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.owner_mobile')} :`">
+                                                    <p class="input-field"><span v-if="application.owner_info.owner_mobile">{{ EngBangNum(application.owner_info.owner_mobile) }}</span></p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenConfig.division')} :`">
+                                                    <p class="input-field">{{ getDivisionName(application.owner_info.division_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenConfig.district')} :`">
+                                                    <p class="input-field">{{ getDistrictName(application.owner_info.district_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.city_corporation_id && application.owner_info.city_corporation_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.city_corporation')} :`">
+                                                    <p class="input-field">{{ getCityCorporationName(application.owner_info.city_corporation_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.upazila_id && application.owner_info.upazila_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.upazila')} :`">
+                                                    <p class="input-field">{{ getUpzillaName(application.owner_info.upazila_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.pauroshoba_id && application.owner_info.pauroshoba_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.municipality_name')} :`">
+                                                    <p class="input-field">{{ getPauroshobaName(application.owner_info.pauroshoba_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.union_id && application.owner_info.union_id !== 0">
+                                                <b-form-group :label="`${$t('teaGardenConfig.union')} :`">
+                                                    <p class="input-field">{{ getUnionName(application.owner_info.union_id) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.post_office_en">
+                                                <b-form-group :label="`${$t('teaGardenPanel.post_office')} :`">
+                                                    <p class="input-field">{{ (currentLocale === 'en') ? application.owner_info.post_office_en : application.owner_info.post_office_bn }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.village_en">
+                                                <b-form-group :label="`${$t('teaGardenPanel.village')} :`">
+                                                    <p class="input-field">{{ (currentLocale === 'en') ? application.owner_info.village_en : application.owner_info.village_bn }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                        </b-row>
+                                    </b-form-group>
+                                </div>
+                                <div class="group-form-card">
+                                    <b-form-group label-cols-lg="3" :label="$t('teaGardenPanel.landInfo')" label-size="md"
+                                        label-class="font-weight-bold pt-0" class="form-view-item">
+                                        <b-row>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.total_land_quantity')} :`">
+                                                    <p class="input-field">{{ $n(application.total_land_quantity) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6">
+                                                <b-form-group :label="`${$t('teaGardenPanel.total_cultivation_land_quantity')} :`">
+                                                    <p class="input-field">{{ $n(application.total_cultivation_land_quantity) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.owner_info.land_ownership">
+                                                <b-form-group :label="`${$t('teaGardenPanel.land_ownership')} :`">
+                                                    <p class="input-field">
+                                                        <span v-if="$i18n.locale === 'bn'">
+                                                            <span v-if="application.owner_info.land_ownership === 1">
+                                                                হ্যাঁ
+                                                            </span>
+                                                            <span v-else>
+                                                                না
+                                                            </span>
+                                                        </span>
+                                                        <span v-else>
+                                                            <span v-if="application.owner_info.land_ownership === 1">
+                                                                Yes
+                                                            </span>
+                                                            <span v-else>
+                                                                No
+                                                            </span>
+                                                        </span>
+                                                    </p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.mouja_en">
+                                                <b-form-group :label="`${$t('teaGardenPanel.mouja')} :`">
+                                                    <p class="input-field">{{ (currentLocale === 'en') ? application.mouja_en : application.mouja_bn }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.khotian">
+                                                <b-form-group :label="`${$t('teaGardenPanel.khotian')} :`">
+                                                    <p class="input-field">{{ EngBangNum(application.khotian) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                            <b-col sm="6" v-if="application.dag_no">
+                                                <b-form-group :label="`${$t('teaGardenPanel.dag_no')} :`">
+                                                    <p class="input-field">{{ EngBangNum(application.dag_no) }}</p>
+                                                </b-form-group>
+                                            </b-col>
+                                        </b-row>
+                                    </b-form-group>
+                                </div>
+                            </div>
+                            </div>
+                          </b-col>
+                          <b-col md="12" class="text-left">
+                            <b-button @click="back" class="ml-3"><i class="ri-arrow-go-back-fill"></i>  {{ $t('teaGardenConfig.back') }}</b-button>
+                          </b-col>
+                        </b-row>
+                      </div>
+                    </b-overlay>
+                  </b-tab>
+                  <b-tab :title="$t('teaGardenPanel.forward_history')" v-if="!isExternalUser">
+                    <div v-if="forwarLoad || loading" class="col-md-12">
+                      <forward-loading></forward-loading>
+                    </div>
+                    <div v-else class="row">
+                      <div class="col-md-10 offset-md-1">
+                        <div v-for="(forward, index) in application.application.forwards" :key="index">
+                          <b-card>
+                            <b-card-title>
+                              <h5 style="font-size:17px">{{ getCardTitle(forward.status) }}</h5>
+                            </b-card-title>
+                            <b-card-sub-title style="font-size:14px">
+                              <b-row>
+                                <b-col md="5">
+                                  <span class="badge badge-success">{{ $t('license_management.sender') }}</span> : {{
+                                  getUserName(forward.sender_id) }} <i class=" ml-3 ri-arrow-right-line"></i>
+                                </b-col>
+                                <b-col>
+                                  <p class="mb-2"><span class="badge badge-primary">{{ $t('license_management.receiver') }}</span> : {{
+                                  getUserName(forward.receiver_id) }}</p>
+                                  <p class="mb-2"><strong>{{ $t('globalTrans.designation') }} : </strong>
+                                  {{ getDesignationName(forward.designation_id) }}</p>
+                                  <p><strong>{{ $t('globalTrans.office') }} : </strong>
+                                  {{ getOfficeName(forward.office_id) }}</p>
+                                </b-col>
+                              </b-row>
+                            </b-card-sub-title>
+                            <b-card-text class="mt-3">
+                              <b>{{ $t('globalTrans.note') }}</b> : <span>{{ $i18n.locale === 'bn' ? forward.remarks : forward.remarks
+                                }}</span>
+                            </b-card-text>
+                          </b-card>
+                        </div>
+                      </div>
+                    </div>
+                  </b-tab>
+                  <b-tab :title="$t('teaGardenPanel.recommendation_history')" v-if="!isExternalUser">
+                    <div v-if="forwarLoad || loading" class="col-md-12">
+                      <recommendation-loading></recommendation-loading>
+                    </div>
+                    <div v-else class="row">
+                      <div class="col-md-10 offset-md-1">
+                        <div v-for="(recommendation, index) in application.application.recommendations" :key="index">
+                          <b-card v-if="recommendation.status !== 1">
+                            <b-card-title>
+                              <h5 style="font-size:17px">{{ getCardTitleRecommendation(recommendation.status) }}</h5>
+                            </b-card-title>
+                            <b-card-text class="mt-3">
+                              <p class="mb-2"><span class="badge badge-success">{{ $t('teaGardenPanel.by') }}</span> : {{
+                                  getUserName(recommendation.user_id) }}</p>
+                              <p class="mb-2"><strong>{{ $t('globalTrans.designation') }} : </strong>
+                              {{ getDesignationName(recommendation.designation_id) }}</p>
+                              <p class="mb-2"><strong>{{ $t('globalTrans.office') }} : </strong>
+                                {{ getOfficeName(recommendation.office_id) }}</p>
+                              <b>{{ $t('globalTrans.note') }}</b> : <span>{{ $i18n.locale === 'bn' ? recommendation.remarks : recommendation.remarks
+                                }}</span>
+                            </b-card-text>
+                            <div v-if="recommendation.attachment" class="text-right">
+                              <a target="_blank" :href="teaGardenServiceBaseUrl + (isImage(recommendation.attachment) ? 'storage/' : '') + recommendation.attachment"><button
+                                style="padding: 2px 10px;" class="btn btn-success btn-sm"><i class="ri-download-2-line"></i> {{
+                                $t('globalTrans.download') }}</button></a>
+                            </div>
+                          </b-card>
+                        </div>
+                      </div>
+                    </div>
+                  </b-tab>
+                </b-tabs>
+              </b-col>
+            </b-row>
+          </template>
+      </body-card>
+    </card>
+</template>
+<script>
+import RestApi, { authServiceBaseUrl, teaGardenServiceBaseUrl } from '@/config/api_config'
+import { teaFarmerApplicationDetailsApi, smallTeaFarmerViewPdf } from '../../api/routes'
+import ForwardLoading from './../loading/ForwardLoading.vue'
+import RecommendationLoading from './../loading/RecommendationLoading.vue'
+import Loading from './../loading/Details.vue'
+// import ExportPdf from './export-pdf'
+import teaGardenMixin from '@/mixins/tea-garden-service'
+export default {
+  name: 'Details',
+  mixins: [teaGardenMixin],
+  components: {
+    Loading,
+    ForwardLoading,
+    RecommendationLoading
+  },
+  data () {
+    return {
+      forwarLoad: false,
+      teaGardenServiceBaseUrl: teaGardenServiceBaseUrl,
+      application: {
+        reviews: [],
+        owner_info: [],
+        application: {
+          forwards: [],
+          recommendations: []
+        }
+      },
+      users: []
+    }
+  },
+  created () {
+     this.getAppDetail()
+  },
+  computed: {
+    appId () {
+      return this.$route.params.id
+    },
+    loading () {
+      return this.$store.state.commonObj.loading
+    },
+    stepList () {
+      const tfaStepList = [
+        { value: 2, text: this.$i18n.locale === 'en' ? 'Pending' : 'অপেক্ষমাণ', text_en: 'Pending', text_bn: 'অপেক্ষমাণ' },
+        { value: 3, text: this.$i18n.locale === 'en' ? 'Forwarded' : 'ফরোয়ার্ড', text_en: 'Forwarded', text_bn: 'ফরোয়ার্ড' },
+        { value: 4, text: this.$i18n.locale === 'en' ? 'Recommendation' : 'সুপারিশ', text_en: 'Recommendation', text_bn: 'সুপারিশ' },
+        { value: 5, text: this.$i18n.locale === 'en' ? 'Recommended' : 'প্রস্তাবিত', text_en: 'Recommended', text_bn: 'প্রস্তাবিত' },
+        { value: 6, text: this.$i18n.locale === 'en' ? 'Approved' : 'অনুমোদিত', text_en: 'Approved', text_bn: 'অনুমোদিত' },
+        { value: 7, text: this.$i18n.locale === 'en' ? 'Rejected' : 'প্রত্যাখ্যাত', text_en: 'Rejected', text_bn: 'প্রত্যাখ্যাত' }
+      ]
+      if (this.application.application.status === 7) {
+        return tfaStepList.filter(item => item.value !== 6)
+      } else {
+        return tfaStepList.filter(item => item.value !== 7)
+      }
+    },
+    forwardStatusList () {
+      const list = [
+        { value: 1, text: this.$i18n.locale === 'en' ? 'Pending' : 'অপেক্ষমাণ', text_en: 'Pending', text_bn: 'অপেক্ষমাণ' },
+        { value: 2, text: this.$i18n.locale === 'en' ? 'Forwarded' : 'ফরোয়ার্ড', text_en: 'Forwarded', text_bn: 'ফরোয়ার্ড' },
+        { value: 3, text: this.$i18n.locale === 'en' ? 'Approved' : 'অনুমোদিত', text_en: 'Approved', text_bn: 'অনুমোদিত' },
+        { value: 4, text: this.$i18n.locale === 'en' ? 'Reject' : 'বাতিল', text_en: 'Reject', text_bn: 'বাতিল' }
+      ]
+      return list
+    },
+    recommendStatusList () {
+      const list = [
+        { value: 1, text: this.$i18n.locale === 'en' ? 'Pending' : 'অপেক্ষমাণ', text_en: 'Pending', text_bn: 'অপেক্ষমাণ' },
+        { value: 2, text: this.$i18n.locale === 'en' ? 'Recommended' : 'প্রস্তাবিত', text_en: 'Recommended', text_bn: 'প্রস্তাবিত' },
+        { value: 3, text: this.$i18n.locale === 'en' ? 'Forwarded' : 'ফরোয়ার্ড', text_en: 'Forwarded', text_bn: 'ফরোয়ার্ড' },
+        { value: 4, text: this.$i18n.locale === 'en' ? 'Approved' : 'অনুমোদিত', text_en: 'Approved', text_bn: 'অনুমোদিত' },
+        { value: 5, text: this.$i18n.locale === 'en' ? 'Reject' : 'বাতিল', text_en: 'Reject', text_bn: 'বাতিল' }
+      ]
+      return list
+    },
+    currentLocale () {
+        return this.$i18n.locale
+    },
+    isExternalUser () {
+      let isExternal = false
+      if (this.$store.state.Auth.authUser.user_type === 2 || (this.isGardenAdminCheckGardenId() > 0)) {
+        isExternal = true
+      }
+      return isExternal
+    }
+  },
+  methods: {
+    getCardTitle (status) {
+      const tfaStepList = this.forwardStatusList.find(item => item.value === parseInt(status))
+      if (typeof tfaStepList !== 'undefined') {
+        return this.$i18n.locale === 'bn' ? tfaStepList.text_bn : tfaStepList.text_en
+      } else {
+        return ''
+      }
+    },
+    getCardTitleRecommendation (status) {
+      const tfaStepList = this.recommendStatusList.find(item => item.value === parseInt(status))
+      if (typeof tfaStepList !== 'undefined') {
+        return this.$i18n.locale === 'bn' ? tfaStepList.text_bn : tfaStepList.text_en
+      } else {
+        return ''
+      }
+    },
+    getDesignationName (id) {
+      const obj = this.$store.state.CommonService.commonObj.designationList.find(item => item.value === parseInt(id))
+      return this.currentLocale === 'en' ? obj?.text_en : obj?.text_bn
+    },
+    back () {
+      this.$router.go(-1)
+    },
+    async getAppDetail () {
+      this.$store.dispatch('mutateCommonProperties', { loading: true })
+        const result = await RestApi.getData(teaGardenServiceBaseUrl, teaFarmerApplicationDetailsApi, { app_id: this.$route.params.id })
+        if (result.success) {
+          this.application = result.data
+          if (this.application.application.forwards.length) {
+            this.getForwardedUsers(result.data.application.forwards)
+          }
+        }
+        this.$store.dispatch('mutateCommonProperties', { loading: false })
+    },
+    EngBangNum (n) {
+        if (this.$i18n.locale === 'bn') {
+            return n.replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d])
+        } else {
+            return n.replace(/[০-৯]/g, d => '০১২৩৪৫৬৭৮৯'.indexOf(d))
+        }
+    },
+    getOrgName (id) {
+        const org = this.$store.state.CommonService.commonObj.orgProfileList.find(item => item.value === id)
+        if (org && this.$i18n.locale === 'bn') {
+            return org.text_bn
+        } else if (org && this.$i18n.locale === 'en') {
+            return org.text_en
+        }
+    },
+    async pdfExport () {
+      const params = Object.assign({ request_type: 'pdf', local: this.$i18n.locale, org_id: 5, app_id: this.appId })
+      this.$store.dispatch('mutateCommonProperties', { loading: true, listReload: false })
+      const result = await RestApi.getPdfData(teaGardenServiceBaseUrl, smallTeaFarmerViewPdf, params)
+      var blob = new Blob([result], {
+        type: 'application/pdf'
+      })
+      var url = window.URL.createObjectURL(blob)
+      window.open(url).print()
+      this.$store.dispatch('mutateCommonProperties', { loading: false, listReload: false })
+    },
+    getDivisionName  (id) {
+    const division = this.$store.state.CommonService.commonObj.divisionList.find(item => item.value === id)
+        if (division && this.$i18n.locale === 'bn') {
+            return division.text_bn
+        } else if (division && this.$i18n.locale === 'en') {
+            return division.text_en
+        }
+    },
+    getDistrictName (id) {
+    const district = this.$store.state.CommonService.commonObj.districtList.find(item => item.value === id)
+        if (district && this.$i18n.locale === 'bn') {
+            return district.text_bn
+        } else if (district && this.$i18n.locale === 'en') {
+            return district.text_en
+        }
+    },
+    getCityCorporationName (id) {
+    const cityCorporation = this.$store.state.CommonService.commonObj.cityCorporationList.find(item => item.value === id)
+        if (cityCorporation && this.$i18n.locale === 'bn') {
+            return cityCorporation.text_bn
+        } else if (cityCorporation && this.$i18n.locale === 'en') {
+            return cityCorporation.text_en
+        }
+    },
+    getUpzillaName (id) {
+    const upzilla = this.$store.state.CommonService.commonObj.upazilaList.find(item => item.value === id)
+        if (upzilla && this.$i18n.locale === 'bn') {
+            return upzilla.text_bn
+        } else if (upzilla && this.$i18n.locale === 'en') {
+            return upzilla.text_en
+        }
+    },
+    getPauroshobaName (id) {
+    const municipality = this.$store.state.CommonService.commonObj.municipalityList.find(item => item.value === id)
+        if (municipality && this.$i18n.locale === 'bn') {
+            return municipality.text_bn
+        } else if (municipality && this.$i18n.locale === 'en') {
+            return municipality.text_en
+        }
+    },
+    getUnionName (id) {
+    const union = this.$store.state.CommonService.commonObj.unionList.find(item => item.value === id)
+        if (union && this.$i18n.locale === 'bn') {
+            return union.text_bn
+        } else if (union && this.$i18n.locale === 'en') {
+            return union.text_en
+        }
+    },
+    getOfficeName (id) {
+      const data = this.$store.state.CommonService.commonObj.officeList.find(item => item.value === id)
+      if (typeof data !== 'undefined') {
+        return this.$i18n.locale === 'bn' ? data.text_bn : data.text_en
+      } else {
+        return ''
+      }
+    },
+    getUserName (userId) {
+      const user = this.users.find(user => parseInt(user.value) === parseInt(userId))
+      return typeof user !== 'undefined' ? (this.$i18n.locale === 'bn' ? user.text_bn : user.text_en) : ''
+    },
+    async getForwardedUsers (forwards) {
+      this.forwarLoad = true
+      var userIds = []
+      forwards.map((item, key) => {
+        userIds.push(item.sender_id)
+        userIds.push(item.receiver_id)
+      })
+      const params = Object.assign({}, { user_ids: userIds })
+      await RestApi.getData(authServiceBaseUrl, '/user-detail-by-user-ids', params).then(response => {
+          if (response.length) {
+            this.users = response
+          } else {
+            this.users = []
+          }
+          this.forwarLoad = false
+      })
+    },
+    isImage (path) {
+      return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(path)
+    }
+  }
+}
+</script>
+<style scoped>
+  .tag {
+    font-weight: 600;
+    border-left: 4px solid #1c4261;
+    padding-left: 6px;
+  }
+  .download-btn {
+    color: green;
+    border: 1px solid gray;
+    margin-left: 5px;
+    font-size: 18px;
+    padding: 2px 4px;
+  }
+  .yes-btn {
+    color: green;
+    border: 1px solid gray;
+    margin-left: 5px;
+    font-size: 18px;
+    padding: 1px 3px;
+  }
+  .no-btn {
+    color: red;
+    border: 1px solid gray;
+    margin-left: 5px;
+    font-size: 18px;
+    padding: 1px 3px;
+    margin-right: 33px !important;
+  }
+  .tag {
+    font-weight: 600;
+    border-left: 4px solid #1c4261;
+    padding-left: 6px;
+  }
+  .download-btn {
+    color: green;
+    border: 1px solid gray;
+    margin-left: 5px;
+    font-size: 18px;
+    padding: 2px 4px;
+  }
+  .yes-btn {
+    color: green;
+    border: 1px solid gray;
+    margin-left: 5px;
+    font-size: 18px;
+    padding: 1px 3px;
+  }
+  .no-btn {
+    color: red;
+    border: 1px solid gray;
+    margin-left: 5px;
+    font-size: 18px;
+    padding: 1px 3px;
+    margin-right: 33px !important;
+  }
+
+.stepper-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    }
+    .stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+    }
+
+    .stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+    }
+
+    .stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+    }
+
+    .stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+    color: white;
+    }
+
+    .stepper-item.active {
+    font-weight: bold;
+    }
+
+    .stepper-item.completed .step-counter {
+    background-color: #4bb543;
+    color:white;
+    }
+
+    .stepper-item.completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #4bb543;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+    }
+
+    .stepper-item:first-child::before {
+    content: none;
+    }
+    .stepper-item:last-child::after {
+    content: none;
+    }
+    .step-name {
+        color: black;
+        font-weight: bold;
+        font-size: 11px;
+    }
+.tagTwo {
+  position: relative;
+  display: inline-block;
+  border-radius: 6px;
+  clip-path: polygon(20px 0px, 100% 0px, 100% 100%, 0% 100%, 0% 20px);
+  background: hsl(250deg, 100%, 40%);
+  padding: 5px 25px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #FFF;
+  transition: clip-path 500ms;
+}
+.tagTwo:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: hsl(252deg, 100%, 60%);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 6px 0;
+  transition: transform 500ms;
+}
+</style>

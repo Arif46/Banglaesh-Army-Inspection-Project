@@ -1,0 +1,13 @@
+{
+    "approvalProcess":  {
+        "applicant_list": "আবেদনের তালিকা",
+        "application_request_list": "আবেদনের অনুরোধের তালিকা",
+        "recommendation": "সুপারিশ",
+        "recommended": "প্রস্তাবিত",
+        "recommendation_list": "সুপারিশ তালিকা",
+        "app_id": "অ্যাপ আইডি",
+        "assign_yes_no": "আপনি কি আবেদনটি প্রেরণ করতে চান?",
+        "re_recommendation": "পুনঃঃ সুপারিশ",
+        "propose": "প্রস্তাব করুন"
+    }
+}

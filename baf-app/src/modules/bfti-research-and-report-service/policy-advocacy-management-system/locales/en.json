@@ -1,0 +1,15 @@
+{
+    "policy_advocacy":  {
+        "policy": "Policy",
+        "policy_title": "Policy Title", 
+        "description_instruction": "Description with Instruction",
+        "submission_date": "Submission Date",
+        "policy_information": "Policy Information",
+        "policy_request": "Policy Request",
+        "policy_advocacy": "Policy Advocacy",
+        "focal_point_information": "Focal Point Information",
+        "focal_point_name": "Focal Point Name",
+        "focal_point_designation": "Focal Point Designation"
+    }
+
+}

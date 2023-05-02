@@ -1,0 +1,11 @@
+{
+    "tradeFairInfoManagement":  {
+        "fair_calender_circular": "Fair Calender Circular",
+        "fair_calender_circular_request": "Fair Calendar Circular Request",
+        "approve_fair_calender_circular": "Approved Fair Calendar Circular",
+        "circular_memo_no": "Circular Memo No",
+        "subject": "Subject",
+        "approve_message": "Approved Message",
+        "submission_deadline": "Submission Deadline"
+    }
+}

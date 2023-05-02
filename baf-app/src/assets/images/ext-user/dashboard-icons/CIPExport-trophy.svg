@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;fill:url(#SVGID_1_);}
+	.st1{opacity:0.5;fill:url(#SVGID_2_);}
+	.st2{opacity:0.5;fill:url(#SVGID_3_);}
+	.st3{opacity:0.5;fill:url(#SVGID_4_);}
+	.st4{opacity:0.5;fill:url(#SVGID_5_);}
+	.st5{opacity:0.5;fill:url(#SVGID_6_);}
+	.st6{fill:#BCBCBC;}
+	.st7{fill:#1FE544;}
+	.st8{fill:#278441;}
+	.st9{fill:#FFFFFF;}
+	.st10{fill:#5E3E3E;}
+	.st11{fill:#1E5E15;}
+	.st12{fill:#49AA35;}
+	.st13{fill:none;stroke:#5E3E3E;stroke-width:1.3647;stroke-miterlimit:10;}
+	.st14{fill:#258739;}
+	.st15{fill:#FF0000;}
+	.st16{fill:#6D4FFC;}
+	.st17{fill:#40E828;}
+	.st18{fill:#F9EC00;}
+	.st19{fill:#A58221;}
+	.st20{fill:#333333;}
+	.st21{fill:#EFE597;}
+	.st22{fill:#258739;stroke:#5E3E3E;stroke-width:0.3221;stroke-miterlimit:10;}
+	.st23{fill:#2E8947;}
+	.st24{fill:#289DA3;}
+	.st25{fill:#317ABC;}
+	.st26{fill:#1936E0;}
+	.st27{fill:#0ECC44;}
+	.st28{fill:url(#SVGID_7_);}
+	.st29{fill:url(#SVGID_8_);}
+	.st30{fill:none;stroke:#231F20;stroke-width:1.1215;stroke-miterlimit:10;}
+	.st31{fill:url(#SVGID_9_);}
+	.st32{opacity:0.5;fill:url(#SVGID_10_);}
+	.st33{fill:none;stroke:#231F20;stroke-width:0.5964;stroke-miterlimit:10;}
+	.st34{fill:#997456;}
+	.st35{fill:#DEE23B;}
+	.st36{fill:#494949;}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="13.0275" y1="100.0001" x2="186.0938" y2="100.0001">
+	<stop  offset="0" style="stop-color:#24B700"/>
+	<stop  offset="1" style="stop-color:#15AAFF"/>
+</linearGradient>
+<circle class="st0" cx="99.6" cy="100" r="86.5"/>
+<g>
+	<path class="st6" d="M99.6,200c-55.1,0-100-44.9-100-100S44.4,0,99.6,0s100,44.9,100,100S154.7,200,99.6,200z M99.6,7.7
+		C48.7,7.7,7.3,49.1,7.3,100s41.4,92.3,92.3,92.3s92.3-41.4,92.3-92.3S150.5,7.7,99.6,7.7z"/>
+</g>
+<g>
+	<line class="st33" x1="98.1" y1="161.9" x2="98.1" y2="161.9"/>
+	<path class="st34" d="M64.5,87.6L64.5,87.6c-7.7,0-13.9-6.2-13.9-13.9V48.2h13.9V87.6z"/>
+	<path class="st34" d="M134.6,87.6L134.6,87.6l0-39.4h13.9v25.6C148.4,81.4,142.2,87.6,134.6,87.6z"/>
+	<g>
+		<path class="st35" d="M126.1,142.1v6.7h-53v-6.7c0-3.4,2.8-6.2,6.2-6.2h10.1v-17.8c6.7,2.6,13.5,2.6,20.4,0v17.8h10.1
+			C123.3,135.9,126.1,138.7,126.1,142.1z"/>
+		<path class="st36" d="M133.7,165.3H65.4v-8.6c0-3.6,2.9-6.5,6.5-6.5h55.4c3.6,0,6.5,2.9,6.5,6.5V165.3z"/>
+		<g>
+			<path class="st35" d="M99.6,117.5L99.6,117.5c-18.1,0-32.8-14.7-32.8-32.8V36h65.6v48.7C132.4,102.8,117.7,117.5,99.6,117.5z"/>
+			<polygon class="st15" points="99.6,62.5 104.2,71.8 114.4,73.3 107,80.5 108.7,90.8 99.6,85.9 90.4,90.8 92.1,80.5 84.7,73.3 
+				95,71.8 			"/>
+		</g>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,31 @@
+{
+    "notification":  {
+        "notification": "নোটিফিকেশন",
+        "notification_type": "নোটিফিকেশনের ধরণ",
+        "notification_type_name": "নোটিফিকেশনের ধরণের নাম (ইংরেজি)",
+        "notification_type_name_bn": "নোটিফিকেশনের ধরণের নাম (বাংলা)",
+        "notification_type_entry": "নোটিফিকেশনের ধরণ যোগ করুন",
+        "notification_setting": "বিজ্ঞপ্তি সেটআপ",
+        "template": "টেমপ্লেট",
+        "mobile": "মোবাইল",
+        "message_template": "বার্তা টেমপ্লেট",
+        "email_web_text": "ইমেল/ওয়েব",
+        "media": "মিডিয়া",
+        "recipients": "প্রাপক",
+        "button": "বাটন",
+        "notification_template": "নোটিফিকেশনের টেমপ্লেট",
+        "notification_template_entry": "নোটিফিকেশনের টেমপ্লেট যোগ করুন",
+        "circulate_notice": "বিজ্ঞপ্তি প্রচার",
+        "circulate_notice_entry": "বিজ্ঞপ্তি প্রচার যোগ করুন",
+        "notice_titlel": "বিজ্ঞপ্তির শিরোনাম",
+        "notice_title": "বিজ্ঞপ্তির শিরোনাম (ইংরেজি)",
+        "notice_title_bn": "বিজ্ঞপ্তির শিরোনাম (বাংলা)",
+        "notice_description": "বিজ্ঞপ্তির বিবরণ (ইংরেজি)",
+        "notice_descriptionl": "বিজ্ঞপ্তির বিবরণ",
+        "notice_description_bn": "বিজ্ঞপ্তির বিবরণ (বাংলা)",
+        "notice_for": "বিজ্ঞপ্তির  জন্য ",
+        "office": "অফিস",
+        "designation": "উপাধি",
+        "schedule": "সময়সূচী"
+    }
+}

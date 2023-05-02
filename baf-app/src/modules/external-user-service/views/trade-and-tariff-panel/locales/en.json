@@ -1,0 +1,10 @@
+{
+    "externalTradeTraiff": {
+        "company_name": "Company Name",
+        "bin_no": "Bin No",
+        "bin_attachment": "Bin Attatchment",
+        "main_attachment": "Main Attatchment",
+        "license_no": "License No",
+        "license_attachment": "License Attatchment"
+    }
+}

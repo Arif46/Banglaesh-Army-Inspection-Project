@@ -1,0 +1,19 @@
+{
+    "fair_report":  {
+        "report": "প্রতিবেদন",
+        "exhibition_info_report": "প্রদর্শনী তথ্য প্রতিবেদন",
+        "application_report": "আবেদন প্রতিবেদন",
+        "representatives": "প্রতিনিধি",
+        "fair_calendar_report": "মেলা ক্যালেন্ডার প্রতিবেদন",
+        "name_title_event": "তথ্য পাওয়া যায়নি!",
+        "not_found": "তথ্য পাওয়া যায়নি!",
+        "ledger_report":"লেজার রিপোর্ট",
+        "payment_status": "লেনদেনের অবস্থা",
+        "applicant_name": "আবেদনকারী নাম",
+        "stall_name": "দোকানের নাম",
+        "total_price": "মোট মূল্য",
+        "payable_amount": "প্রদেয় পরিমান",
+        "paid": "পেইড",
+        "refund": "রিফান্ড"
+    }
+}

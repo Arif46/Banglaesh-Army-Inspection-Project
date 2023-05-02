@@ -1,0 +1,33 @@
+{
+    "eBizReports":  {
+        "YearWiseBAReports": "Year wise Budget Approve Reports",
+        "council" : "Council",
+        "association" : "Association",
+        "fiscal_year_from" : "Fiscal Year From",
+        "fiscal_year_to" : "Fiscal Year To",
+        "demand_budget" : "Demand Budget",
+        "approve_budget" : "Approve Budget",
+        "bpc_text" : "Business Promotion Council",
+        "bpc_address" : "BFIDC Building (8th floor), 73, Motijheel C/A, Dhaka-1000, 1000 Dhaka, Bangladesh",
+        "report_type" : "Report Type",
+        "monitoring_report": "Monitoring Report",
+        "proposal_id":"Proposal No",
+        "proposal_no":"Proposal No",
+        "program_id":"Program No",
+        "program_name":"Program name",
+        "investigator_name":"Investigator name",
+        "monitoring_date":"Monitoring date",
+        "evaluation_report":"Evaluation Report",
+        "project_closure_report":"Project Closure Report",
+        "periodical_report": "Periodical Report",
+        "actual_budget": "Actual budget",
+        "actual_expense": "Actual expense",
+        "financial_report":"Financial Report",
+        "bpc_cost": "BPC cost",
+        "association_cost": "Association Cost",
+        "total_cost": "Total Cost",
+        "workshop_closure_report":"Workshop Closure Report",
+        "workshop_name":"Workshop Name",
+        "workshop_end_date":"workshop end date"
+    }
+}

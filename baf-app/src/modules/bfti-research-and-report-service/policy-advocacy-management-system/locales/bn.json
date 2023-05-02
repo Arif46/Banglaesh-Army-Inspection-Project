@@ -1,0 +1,15 @@
+{
+    "policy_advocacy":  {
+        "policy": "নীতিমালা",
+        "policy_title": "পলিসির শিরোনাম",
+        "description_instruction": "নির্দেশনাবলীর বিবরণ",
+        "submission_date": "জমা দেওয়ার তারিখ",
+        "policy_information": "পলিসি ইনফরমেশন",
+        "policy_request": "নীতিমালার অনুরোধ",
+        "focal_point_information": "ফোকাল পয়েন্ট তথ্য",
+        "focal_point": "ফোকাল পয়েন্ট",
+        "policy_advocacy": "নীতিমালার তথ্য",
+        "focal_point_name": "ফোকাল পয়েন্ট নাম",
+        "focal_point_designation": "ফোকাল পয়েন্ট পদবী"
+    }
+}

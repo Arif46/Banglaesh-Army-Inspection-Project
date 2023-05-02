@@ -1,0 +1,33 @@
+{
+    "eBizReports":  {
+       "YearWiseBAReports" : "বছরভিত্তিক বাজেট অনুমোদন প্রতিবেদন",
+       "council" : "কাউন্সিল",
+       "association" : "সংগঠন",
+       "fiscal_year_from" : "অর্থবছর থেকে",
+       "fiscal_year_to" : "অর্থবছর পর্যন্ত",
+       "demand_budget" : "চাহিদা বাজেট",
+       "approve_budget" : "বাজেট অনুমোদন",
+       "bpc_text" : "বিজনেস প্রমোশন কাউন্সিল (বিপিসি)",
+       "bpc_address" : "বিএফআইডিসি ভবন (৮ম তলা), ৭৩, মতিঝিল সি/এ, ঢাকা-১০০০, ১০০০ ঢাকা, বাংলাদেশ",
+       "report_type" : "প্রতিবেদনের ধরণ",
+       "monitoring_report": "পর্যবেক্ষণ প্রতিবেদন",
+       "project_closure_report":"প্রজেক্ট ক্লোজার রিপোর্ট",
+       "proposal_no":"প্রপোজাল নং",
+       "proposal_id":"প্রপোজাল নং",
+       "program_id":"প্রোগ্রাম নং",
+       "program_name":"প্রোগ্রামের নাম",
+       "investigator_name":"তদন্তকারীর নাম",
+       "monitoring_date":"পর্যবেক্ষণ তারিখ",
+       "evaluation_report":"মূল্যায়ন প্রতিবেদন",
+       "periodical_report": "সাময়িক প্রতিবেদন",
+       "financial_report":"আর্থিক প্রতিবেদন",
+       "actual_budget": "প্রকৃত বাজেট",
+       "actual_expense": "প্রকৃত খরচ",
+       "bpc_cost": "বিপিসি খরচ",
+       "association_cost": "সংগঠন খরচ",
+       "total_cost": "মোট খরচ",
+       "workshop_closure_report":"কর্মশালা বন্ধ রিপোর্ট",
+       "workshop_name":"কর্মশালার নাম",
+       "workshop_end_date":"কর্মশালার শেষ তারিখ"
+    }
+}

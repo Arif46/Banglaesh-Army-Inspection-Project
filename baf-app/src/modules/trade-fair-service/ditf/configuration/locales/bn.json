@@ -1,0 +1,30 @@
+{
+    "ditfConfig":  {
+        "business_type": "ব্যবসার ধরণ",
+        "info": "তথ্য",
+        "type": "টাইপ",
+        "stall_category": "ষ্টল/প্যাভিলিয়ান/রেস্তোরাঁর ক্যাটাগরি",
+        "circular": "সার্কুলার",
+        "stall_info": "ষ্টল/প্যাভিলিয়ান/রেস্তোরাঁর তথ্য",
+        "fair_calendar": "মেলার ক্যালেন্ডার",
+        "instruction": "নির্দেশিকা",
+        "stall_pavilion_restaurant": "ষ্টল/প্যাভিলিয়ান/রেস্তোরাঁর",
+        "stall_pavilion_restaurant_type": "ষ্টল/প্যাভিলিয়ান/রেস্তোরাঁর ধরণ",
+        "category": "ক্যাটাগরি",
+        "total_stall_quantity": "মোট স্টলের পরিমাণ",
+        "security_money": "সিকিউরিটি মানি",
+        "fair_name": "মেলার নাম",
+        "notFound": "তথ্য পাওয়া যায়নি",
+        "one_item_msg": "কমপক্ষে একটি আইটেম যোগ করুন",
+        "select_fair_title": "অনুগ্রহ করে মেলা নির্বাচন করুন!!",
+        "alreadyMsg": "এই আইটেম যোগ করা হয়েছে",
+        "stall_no": "ষ্টল নাম্বার",
+        "stall_location": "ষ্টল লোকেশন",
+        "price_type": "মূল্যের ধরন",
+        "size": "সাইজ",
+        "stall_qty": "ষ্টল সংখ্যা",
+        "app_porcess_fee": "আবেদন প্রক্রিয়ার ফি",
+        "fare_floor": "ফ্লোর ভাড়া",
+        "security_perc": "নিরাপত্তা শতাংশ (%)"
+    }
+}

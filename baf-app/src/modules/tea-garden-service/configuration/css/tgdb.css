@@ -1,0 +1,212 @@
+/* total garden style */
+.fertilizer-distribution .total-gardens .total-garden-card {
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    background: #12b338;
+}
+
+.fertilizer-distribution .total-gardens .total-garden-card::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -40px;
+    z-index: 2;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px 0 80px 40px;
+    border-color: transparent transparent transparent #12b338;
+}
+
+.fertilizer-distribution .total-gardens .total-garden-card i {
+    font-size: 60px;
+    line-height: 1;
+}
+
+.fertilizer-distribution .total-gardens .total-garden-card p {
+    font-size: 22px;
+}
+
+.fertilizer-distribution .total-gardens .total-garden-card h3 {
+    font-size: 28px;
+}
+
+.fertilizer-distribution .total-gardens img {
+    max-height: 200px;
+    width: 100%;
+}
+
+.fertilizer-distribution .info-card {
+    margin-top: 35px;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fertilizer-distribution .info-card .icon {
+    margin-top: -40px;
+    display: flex;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 60px;
+}
+
+.fertilizer-distribution .info-card .content {
+    margin-top: 5px;
+}
+
+.fertilizer-distribution .info-card .content h3 {
+    margin-top: 5px;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.fertilizer-distribution .info-card.submitted {
+    background: #0F95CF;
+}
+
+.fertilizer-distribution .info-card.submitted .icon,
+.fertilizer-distribution .info-card.submitted .content h3 {
+    background: #0785bb;
+}
+
+.fertilizer-distribution .info-card.approved {
+    background: #1DCD6E;
+}
+
+.fertilizer-distribution .info-card.approved .icon,
+.fertilizer-distribution .info-card.approved .content h3 {
+    background: #11b75f;
+}
+
+.fertilizer-distribution .info-card.pending {
+    background: #DE960D;
+}
+
+.fertilizer-distribution .info-card.pending .icon,
+.fertilizer-distribution .info-card.pending .content h3 {
+    background: #c78406;
+}
+
+.fertilizer-distribution .info-card.requested-far {
+    background: #0fc9cf;
+}
+
+.fertilizer-distribution .info-card.requested-far .icon,
+.fertilizer-distribution .info-card.requested-far .content h3 {
+    background: #06abb1;
+}
+
+.fertilizer-distribution .info-card.approved-far {
+    background: #1930e2;
+}
+
+.fertilizer-distribution .info-card.approved-far .icon,
+.fertilizer-distribution .info-card.approved-far .content h3 {
+    background: #1127cd;
+}
+
+/* Tree Disposal NOC */
+.fertilizer-distribution .info-card {
+    margin-top: 35px;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fertilizer-distribution .info-card .icon {
+    margin-top: -40px;
+    display: flex;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 60px;
+}
+
+.fertilizer-distribution .info-card .content {
+    margin-top: 5px;
+}
+
+.fertilizer-distribution .info-card .content h3 {
+    margin-top: 5px;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.fertilizer-distribution .info-card.submitted {
+    background: #0F95CF;
+}
+
+.fertilizer-distribution .info-card.submitted .icon,
+.fertilizer-distribution .info-card.submitted .content h3 {
+    background: #0785bb;
+}
+
+.fertilizer-distribution .info-card.approved {
+    background: #1DCD6E;
+}
+
+.fertilizer-distribution .info-card.approved .icon,
+.fertilizer-distribution .info-card.approved .content h3 {
+    background: #11b75f;
+}
+
+.fertilizer-distribution .info-card.pending {
+    background: #DE960D;
+}
+
+.fertilizer-distribution .info-card.pending .icon,
+.fertilizer-distribution .info-card.pending .content h3 {
+    background: #c78406;
+}
+
+.fertilizer-distribution .info-card.requested-far {
+    background: #0fc9cf;
+}
+
+.fertilizer-distribution .info-card.requested-far .icon,
+.fertilizer-distribution .info-card.requested-far .content h3 {
+    background: #06abb1;
+}
+
+.fertilizer-distribution .info-card.total-app {
+    background: #1930e2;
+}
+
+.fertilizer-distribution .info-card.total-app .icon,
+.fertilizer-distribution .info-card.total-app .content h3 {
+    background: #1127cd;
+}
+
+.fertilizer-distribution .info-card.reject {
+    background: #e22619;
+}
+
+.fertilizer-distribution .info-card.reject .icon,
+.fertilizer-distribution .info-card.reject .content h3 {
+    background: #bd180c;
+}

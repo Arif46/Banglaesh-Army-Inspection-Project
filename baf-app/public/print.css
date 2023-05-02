@@ -1,0 +1,8 @@
+.table-wrapper table tbody tr td {
+    border-color: #15273b !important;
+}
+@media print {
+    .table-wrapper table tbody tr td {
+        border-color: #15273b !important;
+    }
+}

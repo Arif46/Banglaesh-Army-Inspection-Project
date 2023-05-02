@@ -1,0 +1,435 @@
+:root {
+    --rjsc-brand: #198754;
+    --rjsc-title-bg: linear-gradient(176deg, #157748 18%, #348d4d 64%, #157748 95%);
+    --light: #f2fcf9;
+    --dark: #495057;
+}
+
+.rjsc-title-bg {
+    background: var(--rjsc-title-bg);
+}
+
+.box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+/* navigation manu style */
+.menu-rjsc {
+    width: 100%;
+    height: auto;
+}
+
+.menu-desktop .navbar {
+    padding: 0;
+    z-index: 11;
+}
+
+.menu-desktop .navbar .navbar-nav .nav-item {
+    justify-content: flex-start;
+    position: relative;
+    border-right: 1px solid #006839;
+    border-left: 1px solid #10995a;
+}
+/* .menu-desktop .navbar .navbar-nav .nav-item:first-child{
+    border-left: none;
+}
+.menu-desktop .navbar .navbar-nav .nav-item:last-child{
+    border-right: none;
+} */
+
+.menu-desktop .navbar-nav .nav-link {
+    color: var(--white);
+    font-weight: 400;
+    border-radius: 0;
+    width: 100%;
+}
+
+.menu-desktop .navbar-nav .nav-link:hover .dropdown {
+    display: block;
+}
+
+.menu-desktop .navbar-nav .dropdown {
+    text-align: start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100px;
+    border-radius: 0 0 5px 5px;
+    z-index: 10;
+    display: none;
+    background-color: rgba(5, 112, 62, 0.9);
+    animation: growOut 300ms ease-in-out forwards;
+    transform-origin: top center;
+}
+
+.menu-desktop .navbar-nav .nav-link .dropdown .nav-link:hover .sub-dropdown {
+    display: block;
+}
+
+.menu-desktop .navbar-nav .dropdown .sub-dropdown {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: max-content;
+    border-radius: 0 0 5px 5px;
+    z-index: 10;
+    display: none;
+    background-color: rgba(5, 112, 62, 0.9);
+    animation: growOut 300ms ease-in-out forwards;
+    transform-origin: top center;
+}
+
+@keyframes growOut {
+    0% {
+        transform: scale(0)
+    }
+
+    80% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+/* mobile sidebar style */
+.sidebar-button {
+    display: none;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.sidebar {
+    width: 100%;
+    height: 100%;
+    visibility: collapse;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 111;
+    transition: all .3s ease-out;
+}
+
+.sidebar.active {
+    visibility: visible;
+}
+
+.sidebar.active .menu {
+    left: 0;
+}
+
+.sidebar.active .overlay {
+    opacity: 1;
+}
+
+.sidebar .menu {
+    padding: 1rem;
+    width: 70%;
+    height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    left: -70%;
+    z-index: 2;
+    background: var(--rjsc-brand);
+    transition: all .3s ease-out;
+    box-shadow: 4px 0px 35px 0px rgb(0 0 0 / 29%);
+}
+
+.sidebar .menu .login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #036036;
+}
+.sidebar .overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    background: hsla(0, 0%, 87%, .678);
+    transition: all .3s ease-out;
+}
+.sidebar .menu .mobile-menu {
+    width: 100%;
+    color: #fff;
+}
+
+.sidebar .menu .mobile-menu li label:hover {
+    color: rgb(240, 255, 247);
+}
+.sidebar .menu .mobile-menu li label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.2rem;
+}
+.sidebar .menu .mobile-menu li .dd-menu {
+    display: none;
+    opacity: 0;
+    padding: 0 0.5rem;
+    transition: .5s all;
+}
+
+.sidebar .menu .mobile-menu input[type=checkbox] {
+    display: none;
+}
+
+.sidebar .menu .mobile-menu [id^=item]:checked+ul {
+    display: block;
+    opacity: 1;
+}
+.sidebar .menu .mobile-menu [id^=item]:checked label {
+    background-color: #15aa62;
+}
+
+@media screen and (max-width: 600px) {
+    .sidebar-button {
+        display: block;
+    }
+
+    .navbar-expand .navbar-collapse {
+        display: none !important;
+    }
+    .header-wrapper .header-action {
+        position: absolute;
+        right: .4rem;
+        top: 1.5rem;
+        z-index: 11;
+    }
+    .header-wrapper .header-action #log-btn{
+        display: none;
+    }
+}
+/* navigation manu style */
+/* Common Page Title */
+.page-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0;
+    border-radius: 4px;
+}
+.page-title h5{
+    text-align: center;
+    color: var(--dark);
+}
+.breadcrumb.rjsc-bread{
+    padding: 0.5rem 0;
+    justify-content: center;
+    margin-right: 0;
+}
+.breadcrumb.rjsc-bread .breadcrumb-item a{
+    color: var(--dark);
+}
+.breadcrumb.rjsc-bread .breadcrumb-item::before{
+    color: var(--dark);
+}
+.breadcrumb.rjsc-bread .breadcrumb-item.active span{
+    font-weight: 600;
+    color: var(--dark);
+}
+/* pagination style for rjsc */
+.pagination.rjsc-pagi .page-item.active .page-link {
+    background: var(--rjsc-brand);
+    border-color: var(--rjsc-brand);
+}
+/* Common List Style */
+.basic-list li {
+    display: flex;
+    font-weight: 500;
+    text-align: justify;
+    align-items: center;
+    padding: 4px 0;
+    box-sizing: border-box;
+}
+.basic-list li::before {
+    content: "\27A4";
+    font-size: 1rem;
+    text-align: right;
+    min-width: 50px;
+    padding-right: 8px;
+    align-self: flex-start;
+}
+.sub-list li{
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    text-align: justify;
+    padding: 4px 0;
+    box-sizing: border-box;
+}
+.sub-list li::before {
+    content: "\2714";
+    font-size: 1rem;
+    text-align: right;
+    min-width: 30px;
+    padding-right: 8px;
+    align-self: flex-start;
+}
+/* table design for rjsc office address, this style is effected in faq & contact us page */
+/* .table-wrapper {
+    margin: 10px;
+} */
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+}
+.fl-table thead{
+    border: 1px solid var(--rjsc-brand);
+}
+.fl-table tbody{
+    border: 1px solid #6b6b6b;
+}
+.fl-table td,
+.fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border: 1px solid;
+    border-color: #bababa;
+    font-size: 13px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: var(--rjsc-brand);
+}
+
+/* .fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: var(--rjsc-brand);
+} */
+
+.fl-table tr:nth-child(even) {
+    background: #f3f3f3;
+}
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+
+    /* .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    } */
+
+    .fl-table thead,
+    .fl-table tbody,
+    .fl-table thead th {
+        display: block;
+    }
+
+    .fl-table thead th:last-child {
+        border-bottom: none;
+    }
+
+    .fl-table thead {
+        float: left;
+    }
+
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+
+    .fl-table td,
+    .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+.section_title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    position: relative;
+}
+.section_title h4, .section_title h5{
+    padding: 0 1rem;
+    width: max-content;
+    background-color: var(--background-color);
+    z-index: 2;
+}
+.section_title::after{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-repeat: repeat-x;
+    background-image: url(../../assets/images/rjsc-portal/title-pattern.png);
+    z-index: 1;
+}

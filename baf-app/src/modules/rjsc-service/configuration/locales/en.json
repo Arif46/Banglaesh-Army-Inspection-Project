@@ -1,0 +1,17 @@
+{
+    "rjscConfig":  {
+        "test": "Test",
+        "restricted_word" : "Restricted Word",
+        "word" : "Word",
+        "alphabet_wise_role_search": "Alphabet Wise Role Search",
+        "alphabet_wise_role_assign": "Alphabet Wise Role Assign",
+        "alphabet_az": "Alphabet (A-Z)",
+        "alphabet": "Alphabet",
+        "group_entity_name": "Group Entity Name",
+        "name_clearness": "Name Clearness",
+        "considerable_word": "Considerable Word",
+        "business_type": "Business Type",
+        "common_fee": "Common Fee",
+        "fee": "Fee"
+    }
+}

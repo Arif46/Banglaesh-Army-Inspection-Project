@@ -1,0 +1,11 @@
+const externalPanel = '/external/external-panel/'
+export const externalPanelList = externalPanel + 'list'
+export const externalPanelStore = externalPanel + 'store'
+export const externalPanelUpdate = externalPanel + 'update'
+export const externalPanelToggle = externalPanel + 'toggle-status'
+
+const externalMenu = '/external/external-menu/'
+export const externalMenuList = externalMenu + 'list'
+export const externalMenuStore = externalMenu + 'store'
+export const externalMenuUpdate = externalMenu + 'update'
+export const externalMenuToggle = externalMenu + 'toggle-status'

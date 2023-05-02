@@ -1,0 +1,13 @@
+// Fair Calender Circular Routes......
+const fairCalenderCircular = '/itf-tfim/fair-calender-circular/'
+export const fairCalenderCircularList = fairCalenderCircular + 'list'
+export const fairCalenderCircularForward = fairCalenderCircular + 'forward'
+export const fairCalenderCircularStore = fairCalenderCircular + 'store'
+export const fairCalenderCircularUpdate = fairCalenderCircular + 'update'
+export const fairCalenderCircularToggle = fairCalenderCircular + 'toggle-status'
+export const fairCalenderCircularShow = fairCalenderCircular + 'show'
+export const fairCalenderCircularForwardList = fairCalenderCircular + 'forward-list'
+export const fairCalenderCircularApproveList = fairCalenderCircular + 'approve-list'
+export const fairCalenderCircularApprove = fairCalenderCircular + 'approve'
+export const fairCalenderCircularReturn = fairCalenderCircular + 'return'
+export const fairCalenderCircularPublish = fairCalenderCircular + 'publish'

@@ -1,0 +1,8 @@
+{
+    "ditfAppTradeFairManages":  {
+        "ditf_receive_app": "DITF Receive Application",
+        "ditf_approve_app": "DITF Approved Application",
+        "org_name": "Organization Name",
+        "org_address": "Organization Address"
+    }
+}

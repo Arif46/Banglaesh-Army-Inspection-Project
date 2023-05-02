@@ -1,0 +1,19 @@
+{
+    "researchRequestManagement" : {
+        "contract_signing": "Contract Signing Info",
+        "contract_sign": "Contract Signing",
+        "eoi_rfp_no": "EOI Reference No/RFP No",
+        "budget_information": "Budget Information",
+        "contract_amount": "Contract Amount",
+        "installment": "Installment",
+        "payment_for": "Payment Through",
+        "installment_amount": "Installment Amount",
+        "installment_no": "Installment No",
+        "document_name": "Document Name",
+        "contract_signing_basic_info": " Contract Signing Info",
+        "document_information": "Document Information",
+        "contract_sign_status": "Contract not Signed",
+        "contract_signed_status": "Contract Signed",
+        "research_type": "Research Type"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "eBizDashboard":  {
+        "program_management": "প্রোগ্রাম ব্যবস্থাপনা",
+        "proposal_management": "প্রপোজাল ব্যবস্থাপনা",
+        "program": "প্রোগ্রাম",
+        "approve_program": "অনুমোদিত প্রোগ্রাম",
+        "pending_program": "বিচারাধীন প্রোগ্রাম",
+        "association": "সংগঠন",
+        "agreement": "চুক্তি",
+        "total_circular": "মোট বিজ্ঞপ্তি",
+        "total_proposal": "মোট প্রপোজাল",
+        "approved_proposal": "অনুমোদিত প্রপোজাল",
+        "pending_proposal": "বিচারাধীন প্রপোজাল",
+        "filter_by_fiscal_year": "অর্থবছর দ্বারা ফিল্টার",
+        "filter_by_association": "সংগঠন দ্বারা ফিল্টার"
+    }
+}

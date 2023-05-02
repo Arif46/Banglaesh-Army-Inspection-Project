@@ -1,0 +1,25 @@
+{
+    "organogram":  {
+        "office_type": "Office Type",
+        "office_type_name": "Office Type Name",
+        "org": "Organization",
+        "designation": "Designation",
+        "direct_post":"Direct Post",
+        "promotional_post":"Promotional Post",
+        "total_post":"Total Post",
+        "grade_post":"Grade of Post",
+        "designation_en": "Designation (En)",
+        "designation_bn": "Designation (Bn)",
+        "assign_designation": "Assign Designation",
+        "office_name": "Office Name",
+        "approved_post": "Approved Post",
+        "avaliable_post": "Avaliable Post",
+        "office": "Office",
+        "office_code": "Office Code",
+        "parent_office_type": "Parent Office Type",
+        "parent_office_name": "Parent Office Name",
+        "component_designation": "Component Designation",
+        "is_regional_office": "Regional Office",
+        "regional_office_name": "Regional Office Name"
+    }
+}

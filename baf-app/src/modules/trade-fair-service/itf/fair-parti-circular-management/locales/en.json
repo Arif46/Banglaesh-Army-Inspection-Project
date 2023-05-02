@@ -1,0 +1,17 @@
+{
+    "tradeFairPartiCircularManagement":  {
+        "fair_parti_circular": "Fair Participation Circular",
+        "fair_parti_circular_request": "Requested Fair Participation Circular",
+        "fair_parti_circular_approval": "Approved Fair Participation Circular",
+        "circular_info": "Circular Information",
+        "subsidy_info": "Subsidy Information",
+        "stall_info": "Stall Information",
+        "subsidy_range": "Subsidy range",
+        "fair_parti_cir_info": "Fair Participation Circular Information",
+        "equel_zero": "Initial (no export)",
+        "underFive": "Under Five",
+        "underTen": "Under Ten",
+        "aboveTen": "Under Ten",
+        "return": "Return"
+    }
+}

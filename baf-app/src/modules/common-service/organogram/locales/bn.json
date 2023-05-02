@@ -1,0 +1,25 @@
+{
+    "organogram":  {
+        "office_type": "অফিসের ধরন",
+        "office_type_name": "অফিসের ধরনের নাম",
+        "designation": "পদবী",
+        "org": "সংগঠন",
+        "direct_post":"সরাসরি পদ",
+        "promotional_post":"পদোন্নতিপ্রাপ্ত পদ",
+        "total_post":"মোট পদ",
+        "grade_post":"পদের শ্রেণী",
+        "designation_en": "পদবী (ইংরেজী)",
+        "designation_bn": "পদবী (বাংলা)",
+        "assign_designation": "পদবি নিযুক্ত করুন",
+        "office_name": "অফিসের নাম",
+        "approved_post": "অনুমোদিত পোস্ট",
+        "avaliable_post": "অবশিষ্ট পদ",
+        "office": "অফিস",
+        "office_code": "অফিস কোড",
+        "parent_office_type": "মূল অফিসের ধরণ",
+        "parent_office_name": "মূল অফিসের নাম",
+        "component_designation": "কম্পোনেন্ট উপাধি",
+        "is_regional_office": "আঞ্চলিক অফিস",
+        "regional_office_name": "আঞ্চলিক অফিসের নাম"
+    }
+}

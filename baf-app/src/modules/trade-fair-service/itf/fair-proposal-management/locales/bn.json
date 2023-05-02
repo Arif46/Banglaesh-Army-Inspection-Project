@@ -1,0 +1,21 @@
+{
+    "tradeFairProposalManagement":  {
+        "fair_proposal_management": "প্রস্তাবিত মেলার ব্যবস্থাপনা",
+        "fair_proposal_sorting": "প্রস্তাবিত মেলার বাছাই",
+        "circular": "বিজ্ঞপ্তি",
+        "total_appliction": "মোট আবেদন",
+        "sorting": "বাছাই",
+        "forward": "ফরোয়ার্ড",
+        "reject": "বাতিল",
+        "exportPromotionBureau": "রপ্তানি উন্নয়ন ব্যুরো",
+        "reject_msg": "আইটেমগুলি সফলভাবে প্রত্যাখ্যান করা হয়েছে৷.",
+        "requested_fair_proposal": "প্রস্তাবিত মেলার অনুরোধ",
+        "finalcalendar": "চূড়ান্ত তালিকা",
+        "name_and_title": "অনুষ্ঠানের নাম এবং শিরোনাম",
+        "city_country": "শহর এবং দেশ",
+        "fair_list": "মেলার তালিকা",
+        "product_wise": "পণ্য অনুযায়ী",
+        "category": "ক্যাটাগরি",
+        "approve_fair_proposal": "অনুমোদিত প্রস্তাবিত মেলার"
+    }
+}

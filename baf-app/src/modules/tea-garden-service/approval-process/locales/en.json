@@ -1,0 +1,13 @@
+{
+    "approvalProcess":  {
+        "applicant_list": "Application List",
+        "application_request_list": "List of Application Requests",
+        "recommendation": "Recommendation",
+        "recommended": "Recommended",
+        "recommendation_list": "Recommendation List",
+        "app_id": "App Id",
+        "assign_yes_no": "Do you want to assign the application?",
+        "re_recommendation": "Re-Recommendation",
+        "propose": "Propose"
+    }
+}

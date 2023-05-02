@@ -1,0 +1,18 @@
+{
+    "fair_report":  {
+        "report": "Report",
+        "exhibition_info_report": "Exhibition Info Report",
+        "application_report": "Application Report",
+        "representatives": "Representatives",
+        "fair_calendar_report": "Fair Calendar Report",
+        "not_found": "Data not found!",
+        "ledger_report":"Ledger Report",
+        "payment_status": "Payment Status",
+        "applicant_name": "Applicant Name",
+        "stall_name": "Stall Name",
+        "total_price": "Total Price",
+        "payable_amount": "Payable Amount",
+        "paid": "Paid",
+        "refund": "Refund"
+    }
+}

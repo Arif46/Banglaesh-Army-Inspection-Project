@@ -1,0 +1,16 @@
+{
+    "rjscConfig":  {
+        "test": "Test",
+        "restricted_word" : "নিয়ন্ত্রিত শব্দ",
+        "word": "শব্দ",
+        "alphabet_wise_role_search": "বর্ণমালা ওয়াইজ রোল অ্যাসাইন অনুসন্ধান করুন",
+        "alphabet_wise_role_assign": "বর্ণমালা ওয়াইজ রোল অ্যাসাইন",
+        "alphabet_az": "বর্ণমালা (A-Z)",
+        "alphabet": "বর্ণমালা",
+        "group_entity_name": "গ্রুপ এনটিটির নাম",
+        "considerable_word": "উল্লেখযোগ্য শব্দ",
+        "business_type": "ব্যবসার ধরণ",
+        "common_fee": "সাধারণ ফি",
+        "fee": "ফি"
+    }
+}

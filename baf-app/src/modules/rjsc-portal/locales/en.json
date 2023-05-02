@@ -1,0 +1,18 @@
+{
+    "rjsc_portal": {
+        "title": "Registrar of Joint Stock Companies and Firms",
+        "sub_title": "Office of the Registrar of Joint Stock Companies and Firms",
+        "login_btn": "Login",
+        "news": "News",
+        "notice": "Notice",
+        "read_more": "Read More",
+        "gallery": "Photo Gallery",
+        "no_of_entity": "No. of Entity",
+        "all_news": "All News",
+        "all_notice": "All Notice",
+        "rjsc_office": "RJSC OFFICES",
+        "first_title": "At present, RJSC has its divisional offices in the following locations.",
+        "second_title": "In near future, RJSC will setup divisional offices in the following towns.",
+        "admin_dis_cover": "Administrative Districts Coverage"
+    }
+}
